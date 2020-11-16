@@ -1,0 +1,19 @@
+{
+  "name": "game-distribution-service",
+  "version": "1.0.0",
+  "description": "final-project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rajmahajan3196/Game-Distribution-Service.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rajmahajan3196/Game-Distribution-Service/issues"
+  },
+  "homepage": "https://github.com/rajmahajan3196/Game-Distribution-Service#readme"
+}
