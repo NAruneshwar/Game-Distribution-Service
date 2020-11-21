@@ -4,6 +4,7 @@
   "description": "final-project",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/rajmahajan3196/Game-Distribution-Service/issues"
   },
-  "homepage": "https://github.com/rajmahajan3196/Game-Distribution-Service#readme"
+  "homepage": "https://github.com/rajmahajan3196/Game-Distribution-Service#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
