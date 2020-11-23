@@ -12,8 +12,10 @@ const getCollectionFn = (collection) => {
 };
 
 module.exports = {
-    // books: getCollectionFn('books'),
-    // reviews: getCollectionFn('reviews')
+    users: getCollectionFn('Users'),
+    games: getCollectionFn('Games'),
+    reviews: getCollectionFn('Reviews'),
+    comments: getCollectionFn('Comments')
 
     //define collections here
 };
