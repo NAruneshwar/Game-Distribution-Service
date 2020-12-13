@@ -3,7 +3,7 @@ const router = express.Router()
 
 
 router.get('/', async (req, res) => {
-    res.render("posts/games_category",{title: "Browse"});
+    res.render("posts/genre",{title: "Browse"});
 });
 
 module.exports = router;
