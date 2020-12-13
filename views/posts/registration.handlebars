@@ -1,11 +1,31 @@
-<h1>Registration</h1>
-<main>
-    <form id="registration-form" action="/register" method="POST">
-        First Name: <input type="text" name="firstname" placeholder="First Name" required>
-        Last Name: <input type="text" name="lastname" placeholder="Last Name" required>
-        Username: <input type="text" name="username" placeholder="Set Username" required>
-        Password:<input type="password" name="password" placeholder="Set Password" required>
-        Password:<input type="password" name="password" placeholder="Type Password again.." required>
-        <input type="submit" value="Sign Up">
+<h1>Sign Up</h1>
+
+<legend>
+
+    <form id="signup" action="/login" method="POST">
+
+    <label>
+        First Name: <input type="text" name="username" placeholder="enter first name" required>
+    </label>
+
+    <label>
+        Last Name: <input type="text" name="username" placeholder="enter last name" required>
+    </label>
+
+    <label>
+        Username: <input type="text" name="username" placeholder="enter username" required>
+    </label>
+
+    <label>
+        Password: <input type="password" name="password" placeholder="enter password" required>
+    </label>
+
+    <label>
+        Re-Enter Password: <input type="password" name="password" placeholder="enter password" required>
+    </label>
+
+    <button>Sign Up</button>
+
     </form>
-</main>
+
+</legend>

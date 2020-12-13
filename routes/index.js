@@ -1,13 +1,15 @@
-const gamesroutes = require('./games')
-const commentroutes = require('./comments')
-const reviewroutes = require('./reviews')
-const loginroutes = require('./login')
+const gamesroutes = require('./games');
+const commentroutes = require('./comments');
+const reviewroutes = require('./reviews');
+const loginroutes = require('./login');
+const signuproutes = require('./signup');
 
 const constructorMethod = (app) => {
     app.use('/comments', commentroutes);
     app.use('/reviews', reviewroutes);
     app.use('/games', gamesroutes);
     app.use('/login', loginroutes);
+    app.use('/signup', signuproutes);
     app.get('/', (req,res) =>{
        res.render("posts/homepage",{title: "Home page"});
     });
