@@ -6,17 +6,17 @@ const create = async (name,image,genre,size,compatibility,languages,age_rating,w
     const gamesCollect = await games();
     
     if(!name|| typeof(name)!='string') {
-        throw 'You must provide a title for the book in string format';
+        throw 'You must provide a name for the book in string format';
     }
     if(name.trim()=== ""){
-        throw 'the given title is empty string please provide a title';
+        throw 'the given name is empty string please provide the name of the game';
     }
-//      Processing images
-    //   if (!genre || !Array.isArray(genre)){
-    //     throw 'You must provide an array of genre';
-    //   }
-    //   if (genre.length === 0) 
-    //     throw 'You must provide at least one genre.';
+    //  Processing images only send in the image name.
+      if (!genre || !Array.isArray(genre)){
+        throw 'You must provide an array of genre';
+      }
+      if (genre.length === 0) 
+        throw 'You must provide at least one genre.';
 
     if(!genre || !Array.isArray(genre)){
         throw 'You must provide an array of genre';
@@ -25,47 +25,47 @@ const create = async (name,image,genre,size,compatibility,languages,age_rating,w
         throw 'You must provide at least one genre.';
 
     if(!size|| typeof(size)!='string') {
-        throw 'You must provide a title for the book in string format';
+        throw 'You must provide a size for the book in string format';
     }
     if(size.trim()=== ""){
-        throw 'the given title is empty string please provide a title'
+        throw 'the given size is empty string please provide a size'
     }
 
     if(!compatibility || !Array.isArray(compatibility)){
-        throw 'You must provide an array of compatibility';
+        throw 'You must provide an array of compatible devices';
     }
     if(compatibility.length === 0) 
-        throw 'You must provide at least one compatibility.';
+        throw 'You must provide at least one compatible devices.';
     
 
     if(!languages || !Array.isArray(languages)){
-        throw 'You must provide an array of languages';
+        throw 'You must provide an array of languages that game supports';
     }
     if(languages.length === 0) 
-        throw 'You must provide at least one languages.';
+        throw 'You must provide at least one language that game supports.';
 
 
     if(!genre || !Array.isArray(genre)){
-        throw 'You must provide an array of genre';
+        throw 'You must provide a genre or an array of genres';
       }
     if(genre.length === 0) 
-        throw 'You must provide at least one genre.';
+        throw 'You must provide a genre or an array of genres.';
 
 
     if(!age_rating|| typeof(age_rating)!='string') {
-        throw 'You must provide a title for the book in string format';
+        throw 'You must provide the age_rating for the game in string format';
       }
     if(age_rating.trim()=== ""){
-        throw 'the given title is empty string please provide a title'
+        throw 'the given age_rating is empty string please provide a value in age_rating'
     }
 
     if(!website|| typeof(website)!='string') {
-        throw 'You must provide a title for the book in string format';
+        throw 'You must provide a website for the game in a string format';
     }
     if(website.trim()=== ""){
-        throw 'the given title is empty string please provide a title'
+        throw 'the given website is empty string please provide a website link'
     }
-     
+    // actually we dont add reviews here.
     if(!reviews || !Array.isArray(reviews)){
         throw 'You must provide an array of reviews';
     }
@@ -84,7 +84,8 @@ const create = async (name,image,genre,size,compatibility,languages,age_rating,w
         age_rating,
         website,
         rating,
-        reviews
+        reviews,
+        "no_of_downloads" : 0
     };
     const insertInfo = await gamesCollect.insertOne(newGame);
     if (insertInfo.insertedCount === 0) throw 'Could not add Game please debug';
@@ -115,7 +116,40 @@ const getAll = async() =>{
     return gamesList
   }
 
+
+
+const remove = async(id, name) => {
+    if (!id) {
+      throw 'You must provide an id to delete game';
+    }
+    // if(typeof(id)!="string" || id.length!=24){
+    //   throw 'You must only pass in id as string that is 24 charecters long'
+    // }
+    // if(id.trim()===""){
+    //   throw 'Id can not be empty spaces'
+    // }
+    var re =  /^[0-9a-fA-F]+$/;
+    if(!re.test(id)) {
+      throw 'Given Input is not in hexadecimal please verify ID'
+    } 
+    // gametitle = await get(id)
+    // let reviewcount = booktitle.reviews.length
+    // console.log(movietitle)
+    gamesCollect = await games();
+    const deletionGame = await gamesCollect.deleteOne({ _id: id });
+      // console.log(deletionMovie);
+      if (deletionGame.deletedCount === 0) {
+        throw `Could not delete Game with id of ${id}`;
+      }
+    
+    return name;
+  
+  }
+  
+  
+
 module.exports = {
     create,
-    getAll
+    getAll,
+    remove
 }
