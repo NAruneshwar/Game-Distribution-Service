@@ -1,0 +1,10 @@
+Routes
+
+For signing up a user
+GET signup/ -> Will render signup page
+POST signup/new_user -> Will get data from the form and put it in database
+
+Login routes
+GET login/ -> Will render login page
+POST login/check -> WIll check the credentials and display page according
+
