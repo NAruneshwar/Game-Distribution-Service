@@ -25,7 +25,7 @@ const create = async (name,image,genre,size,compatibility,languages,age_rating,w
         throw 'You must provide at least one genre.';
 
     if(!size|| typeof(size)!='string') {
-        throw 'You must provide a size for the book in string format';
+        throw 'You must provide a size for the game in string format';
     }
     if(size.trim()=== ""){
         throw 'the given size is empty string please provide a size'
@@ -35,7 +35,7 @@ const create = async (name,image,genre,size,compatibility,languages,age_rating,w
         throw 'You must provide an array of compatible devices';
     }
     if(compatibility.length === 0) 
-        throw 'You must provide at least one compatible devices.';
+        throw 'You must provide at least one compatible device.';
     
 
     if(!languages || !Array.isArray(languages)){
