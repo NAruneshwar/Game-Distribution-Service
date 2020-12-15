@@ -1,55 +1,80 @@
 <div class="signupform">
 
     <h1>Create Account</h1>
+    {{message}}
+    <form id="signup" action="/signup/newuser" method="POST">
 
-    <form id="signup"  action="/login" method="POST">
+        <div>
+            <label>
+                <input type="text" name="first_name" class="signup-info" placeholder="First Name">
+            </label>
+        </div>
 
-    <div>
-        <label>
-            <input type="text" name="username" class="signup-info" placeholder="First Name" required>
-        </label>
-    </div>
+        <div>
+            <label>
+                <input type="text" name="last_name" class="signup-info" placeholder="Last Name" required>
+            </label>
+        </div>
 
-    <div>
-        <label>
-            <input type="text" name="username" class="signup-info" placeholder="Last Name" required>
-        </label>
-    </div>
+        <div>
+            <label>
+                <input type="number" name="age" class="signup-info" placeholder="Age" required>
+            </label>
+        </div>
 
-    <div>
-        <label>
-            <input type="text" name="username" class="signup-info" placeholder="Username" required>
-        </label>
-    </div>
+        <div>
+            <label>
+                <input type="email" name="email" class="signup-info" placeholder="Email" required>
+            </label>
+        </div>
 
-    <div> 
-        <label>
-            <input type="password" name="password" class="signup-info" placeholder="Password" required>
-        </label>
-    </div>
+        <div>
+            <label>
+                <input type="text" name="username" class="signup-info" placeholder="Username" required>
+            </label>
+        </div>
 
-    <div>
-        <label>
-            <input type="password" name="password" class="signup-info" placeholder="Re-enter Password" required>
-        </label>
-    </div>
+        <div>
+            <label>
+                <input type="text" name="state" class="signup-info" placeholder="State" required>
+            </label>
+        </div>
 
-    <div>
-        <p>
-            <span><input type="checkbox" required></span> Agree terms and conditions.
-        </p>
-    </div>
+        <div>
+            <label>
+                <input type="text" name="country" class="signup-info" placeholder="Country" required>
+            </label>
+        </div>
 
-    <button class="signupbtn">Sign Up</button>
+        <div>
+            <label>
+                <input type="password" name="password" class="signup-info" placeholder="Password" required>
+            </label>
+        </div>
+
+        <div>
+            <label>
+                <input type="password" name="retypepassword" class="signup-info" placeholder="Re-enter Password"
+                    required>
+            </label>
+        </div>
+
+        <div>
+            <p>
+                <span><input type="checkbox" required></span> Agree terms and conditions.
+            </p>
+        </div>
+
+        <button class="signupbtn">Sign Up</button>
 
     </form>
 
     <hr>
 
     <div class="have">
-         <p>Have an account? <a href="/login">Log In</a></p>
+        <p>Have an account? <a href="/login">Log In</a></p>
     </div>
 
-   
+
 
 </div>
