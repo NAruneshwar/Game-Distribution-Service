@@ -2,7 +2,7 @@ const mongoCollections = require('../config/mongoCollections.js');
 let { ObjectId } = require('mongodb');
 const users = mongoCollections.users;
 
-const create = async (first_name,last_name,username,age,email,admin,city,state,country,hashedPassword) => {
+const create = async (first_name,last_name,username,age,email,admin,state,country,hashedPassword) => {
     const usersCollect = await users();
     
     if(!first_name|| typeof(first_name)!='string') {
@@ -99,7 +99,8 @@ const create = async (first_name,last_name,username,age,email,admin,city,state,c
         country,
         hashedPassword,
         "reviews" : [],
-        "comment" : []
+        "comment" : [],
+        "game_ids": []
     };
     const insertInfo = await usersCollect.insertOne(newGame);
     if (insertInfo.insertedCount === 0) throw 'Could not add Game please debug';
