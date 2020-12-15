@@ -23,7 +23,7 @@ nav {
 .navlinks {
     display: flex;
     justify-content: space-around;
-    width: 40%;
+    width: 50%;
 }
 
 .navlinks a {
@@ -32,6 +32,11 @@ nav {
     letter-spacing: 3px;
     font-weight: bold;
     font-size: 18px;
+    font-weight: bold;
+}
+
+.navlinks a:hover {
+    color: #041c30;
 }
 
 .navlinks li {
@@ -103,6 +108,10 @@ a.wb:hover {
     font-weight: bold;
 }
 
+.signupbtn:hover {
+    background-color: #4095c6;
+}
+
 .loginform {
     width: 300px;
     box-shadow: 0 0 3px 0  #11498a;
@@ -139,6 +148,10 @@ a.wb:hover {
     outline: none;
     cursor: pointer;
     font-weight: bold;
+}
+
+.loginbtn:hover {
+    background-color: #4095c6;
 }
 
 .have {
@@ -211,7 +224,6 @@ a.wb:hover {
     padding: 20px;
     margin: 5% auto 0;
     text-align: left;
-
 }
 
 .addition h1 {
@@ -283,6 +295,58 @@ a.wb:hover {
     border-radius: 10px;
     font-size: 14px;
     margin: 10px 0;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.gen {
+    width: 1200px;
+    box-shadow: 0 0 3px 0  #11498a;
+    background: white;
+    padding: 20px;
+    margin: 5% auto 0;
+    text-align: left;
+}
+
+.gen h1 {
+    color: #11498a;
+    margin-bottom: 30px;
+}
+
+.gdata {
+    width: 1200px;
+    box-shadow: 0 0 3px 0  #11498a;
+    background: white;
+    padding: 20px;
+    margin: 5% auto 0;
+    text-align: left;
+}
+
+.gdata h1 {
+    color: #11498a;
+    margin-bottom: 30px;
+}
+
+.gdata-info {
+    padding: 10px;
+    margin: 12px 0;
+    width: 100%;
+    outline: none;
+    font-size: 18px;
+}
+
+.buy {
+    display: flex;
+    margin-bottom: 30px;
+    background: #11498a;
+    color: white;
+    width: 9%;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 14px;
+    
     border: none;
     outline: none;
     cursor: pointer;
