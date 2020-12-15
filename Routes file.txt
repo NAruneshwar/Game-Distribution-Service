@@ -1,10 +1,37 @@
 Routes
 
+Admin
+GET admin/ -> Render admin login page
+POST admin/check -> verify admin credentials and redirect on admin's home page
+
 For signing up a user
 GET signup/ -> Will render signup page
 POST signup/new_user -> Will get data from the form and put it in database
 
 Login routes
 GET login/ -> Will render login page
-POST login/check -> WIll check the credentials and display page according
+POST login/check -> WIll check the credentials and redirect accordingly
 
+Games routes
+GET games/ -> will render browse games page (games category page according to diagram) which has various genres
+GET games/genre/:genre -> will show games of that genre (all games of that genre page from diagram)
+GET games/:game_id -> Will show an individual game with that ID (individual games page)
+
+POST games/add -> Accessible by admin only. Add games using this route
+DELETE games/delete/:id -> Accessible by admin only. Delete game with the ID
+PATCH games/update/:id -> Accessible by admin only. Used to update a game's content
+
+Reviews Routes
+GET reviews/:game_id -> Will show reviews for game with specified ID
+POST reviews/:game_id -> Post reviews for the specified game
+
+DELETE reviews/delete/:id -> Accessible by admin only. Delete review with that ID
+
+Profile page
+GET profile/:user_id -> Display gamer's information
+
+DELETE profile/delete/:id -> Accessible by admin only. Delete a player's profile.
+
+Payments Page
+GET payment/:game_id -> Display payment details of the game
+GET payment/success -> Add the game to gamer's profile and display a static page with success message with a link to home page
