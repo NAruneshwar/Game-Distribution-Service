@@ -6,7 +6,7 @@ POST admin /check -> verify admin credentials and redirect on admin's home page
 
 For signing up a user
 GET signup / -> Will render signup page
-POST signup /new_user -> Will get data from the form and put it in database
+POST signup /newuser -> Will get data from the form and put it in database
 
 Login routes
 GET login / -> Will render login page
