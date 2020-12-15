@@ -1,0 +1,142 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 6vh;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #11498a;
+}
+
+.logo {
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 20px;
+}
+
+.navlinks {
+    display: flex;
+    justify-content: space-around;
+    width: 40%;
+}
+
+.navlinks a {
+    color: white;
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.navlinks li {
+    list-style: none;
+}
+
+.welcome {
+    color:  #11498a;
+    text-align: center;
+    margin-top: 250px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+a.wb {
+    display:inline-block;
+    padding:0.3em 1.2em;
+    margin:1em 0.3em 0.3em 0;
+    border-radius:2em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    font-weight:300;
+    color:#FFFFFF;
+    background-color: #11498a;
+    text-align:center;
+    transition: all 0.2s;
+}
+
+a.wb:hover {
+    background-color:#4095c6;
+}
+
+.signupform {
+    width: 300px;
+    box-shadow: 0 0 3px 0  #11498a;
+    background: white;
+    padding: 20px;
+    margin: 8% auto 0;
+    text-align: center;
+}
+
+.signupform h1 {
+    color: #11498a;
+    margin-bottom: 30px;
+}
+
+.signup-info {
+    border-radius: 10px;
+    padding: 13px;
+    margin: 12px 0;
+    width: 100%;
+    border: 1px solid #11498a;
+    outline: none;
+    font-size: 14px;
+}
+
+.signupbtn {
+    background: #11498a;
+    color: white;
+    width: 50%;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 14px;
+    margin: 10px 0;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.loginform {
+    width: 300px;
+    box-shadow: 0 0 3px 0  #11498a;
+    background: white;
+    padding: 20px;
+    margin: 8% auto 0;
+    text-align: center;
+}
+
+.loginform h1 {
+    color: #11498a;
+    margin-bottom: 30px;
+}
+
+.login-info {
+    border-radius: 10px;
+    padding: 13px;
+    margin: 12px 0;
+    width: 100%;
+    border: 1px solid #11498a;
+    outline: none;
+    font-size: 14px;
+}
+
+.loginbtn {
+    background: #11498a;
+    color: white;
+    width: 50%;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 14px;
+    margin: 10px 0;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: bold;
+}

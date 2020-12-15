@@ -1,19 +1,23 @@
-<h1>Log In</h1>
+<div class="loginform">
 
-<legend>
+    <h1>Login</h1>
 
     <form id="login" action="/login" method="POST">
 
-    <label>
-        Username: <input type="text" name="username" placeholder="enter username" required>
-    </label>
+    <div>
+        <label>
+            <input type="text" name="username" class="login-info" placeholder="Username" required>
+        </label>
+    </div>
 
-    <label>
-        Password: <input type="password" name="password" placeholder="enter password" required>
-    </label>
+    <div>
+        <label>
+            <input type="password" name="password" class="login-info" placeholder="Password" required>
+        </label>
+    </div>
 
-    <button>Login</button>
+    <button class="loginbtn">Enter</button>
 
     </form>
 
-</legend>
+</div>
