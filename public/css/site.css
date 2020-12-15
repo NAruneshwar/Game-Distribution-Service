@@ -148,3 +148,143 @@ a.wb:hover {
 .have a {
     text-decoration: none;
 }
+
+.profile {
+    width: 900px;
+    box-shadow: 0 0 3px 0  #11498a;
+    background: white;
+    padding: 20px;
+    margin: 8% auto 0;
+    text-align: left;
+}
+
+.profile h1 {
+    color: #11498a;
+    margin-bottom: 30px;
+}
+
+.profile-info {
+    padding: 12px;
+    margin: 12px 0;
+    width: 100%;
+    outline: none;
+    font-size: 20px;
+}
+
+.admin-control {
+    width: 900px;
+    box-shadow: 0 0 3px 0  #11498a;
+    background: white;
+    padding: 20px;
+    margin: 8% auto 0;
+    text-align: left;
+}
+
+.admin-control h1 {
+    color: #11498a;
+    margin-bottom: 30px;
+}
+
+.cc {
+    padding: 6px;
+    margin: 6px 0;
+    width: 100%;
+    outline: none;
+    font-size: 18px;
+}
+
+.cc a {
+    text-decoration: none;
+    color: #11498a;
+    display: list-item;
+    margin-left: 5px;
+}
+
+.cc a:hover {
+    color: rgb(0, 153, 255);
+}
+
+.addition {
+    width: 1200px;
+    box-shadow: 0 0 3px 0  #11498a;
+    background: white;
+    padding: 20px;
+    margin: 5% auto 0;
+    text-align: left;
+
+}
+
+.addition h1 {
+    color: #11498a;
+    margin-bottom: 30px;
+}
+
+.req {
+    font-size: 20px;
+    font-weight: bold;
+    color: #11498a;
+    margin-bottom: 2px;
+}
+
+.add-info {
+    border-radius: 10px;
+    padding: 10px;
+    margin: 12px 0;
+    width: 100%;
+    border: 1px solid #11498a;
+    outline: none;
+    font-size: 14px;
+}
+
+.addbtn {
+    background: #11498a;
+    color: white;
+    width: 20%;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 14px;
+    margin: 10px 0;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.deletion {
+    width: 1200px;
+    box-shadow: 0 0 3px 0  #11498a;
+    background: white;
+    padding: 20px;
+    margin: 5% auto 0;
+    text-align: left;
+
+}
+
+.deletion h1 {
+    color: #11498a;
+    margin-bottom: 30px;
+}
+
+.deletion-info {
+    border-radius: 10px;
+    padding: 10px;
+    margin: 12px 0;
+    width: 50%;
+    border: 1px solid #11498a;
+    outline: none;
+    font-size: 14px;
+}
+
+.dbtn {
+    background: #11498a;
+    color: white;
+    width: 20%;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 14px;
+    margin: 10px 0;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: bold;
+}
