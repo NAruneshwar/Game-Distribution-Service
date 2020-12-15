@@ -140,3 +140,11 @@ a.wb:hover {
     cursor: pointer;
     font-weight: bold;
 }
+
+.have {
+    margin-top: 10px;
+}
+
+.have a {
+    text-decoration: none;
+}
