@@ -2,7 +2,7 @@ const mongoCollections = require('../config/mongoCollections.js');
 let { ObjectId } = require('mongodb');
 const users = mongoCollections.users;
 
-const create = async (first_name,last_name,username,age,email,admin,city,state,country,hashedPassword) => {
+const create = async (first_name,last_name,username,age,email,admin,state,country,hashedPassword) => {
     const usersCollect = await users();
     
     if(!first_name|| typeof(first_name)!='string') {
@@ -56,14 +56,6 @@ const create = async (first_name,last_name,username,age,email,admin,city,state,c
     if(admin.trim()=== ""){
         throw 'the given admin is empty string please provide the admin setting of the user';
     }
-    
-
-    if(!city|| typeof(city)!='string') {
-        throw 'You must provide a city for the book in string format';
-    }
-    if(city.trim()=== ""){
-        throw 'the given city is empty string please provide a city name'
-    }
 
     if(!state|| typeof(state)!='string') {
         throw 'You must provide the state for the game in string format';
@@ -94,12 +86,12 @@ const create = async (first_name,last_name,username,age,email,admin,city,state,c
         age,
         email,
         admin,
-        city,
         state,
         country,
         hashedPassword,
         "reviews" : [],
-        "comment" : []
+        "comment" : [],
+        "game_ids": []
     };
     const insertInfo = await usersCollect.insertOne(newGame);
     if (insertInfo.insertedCount === 0) throw 'Could not add Game please debug';
@@ -108,10 +100,9 @@ const create = async (first_name,last_name,username,age,email,admin,city,state,c
     return newId
 }
 
-
 const remove = async(id, name) => {
     if (!id) {
-      throw 'You must provide an id to delete game';
+      throw 'You must provide an id to delete user';
     }
     // if(typeof(id)!="string" || id.length!=24){
     //   throw 'You must only pass in id as string that is 24 charecters long'
@@ -148,8 +139,6 @@ const check_usernames = async(username) =>{
 
   }
   
-//make a new function that will get all users data - name it allUsers()... it will not have any parameters.
-
 module.exports = {
     create,
     remove,

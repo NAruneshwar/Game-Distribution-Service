@@ -69,8 +69,8 @@ router.post('/newuser', async (req, res) => {
     try {
         checksForNewUser(data.first_name, data.last_name, data.username, data.age, data.email, data.state, data.country, data.password)
         const hashedPassword = await bcrypt.hash(data.password, 16)
-        const user = await userData.create(data.first_name, data.last_name, data.username, data.age, data.email, "No", "city", data.state, data.country, hashedPassword)
-        res.render("posts/login", { title: "Login", message: "Account created, please login." })
+        const user = await userData.create(data.first_name, data.last_name, data.username, data.age, data.email, "No", data.state, data.country, hashedPassword)
+        res.render("posts/signup", { title: "Sign Up", message: "Account created, please login." })
     } catch (e) {
         res.render("posts/signup", { title: "Sign Up", message: e })
     }

@@ -1,21 +1,12 @@
+<a href="/admin/homepage">Back to homepage</a>
 <div class="deletion">
 
-<h1>Game Deletion Portal</h1>
-
-<p class="req">Please provide the Game ID to delete a game from the store:</p>
-
-<form>
-
-    <div>
-
-        <label>
-            <input type="text" class="deletion-info" placeholder="Game Identification Number">
-        </label>
-
-    </div>
-
-    <button class="dbtn">Delete</button>
-
-</form>
-
+    <h1>Game Deletion Portal</h1>
+    {{message}}
+    <p class="req">Showing all games</p>
+    {{#each data}}
+    <form action="/games/delete/{{_id}}" method="POST">
+        {{name}}<button class="dbtn" type="submit">Delete</button><br>
+    </form>
+    {{/each}}
 </div>
