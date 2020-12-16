@@ -205,8 +205,8 @@ const getAll = async() =>{
 
   const getOne = async(game_id) =>{
     const gamesCollect = await games();
-    const gamesList = await gamesCollect.findOne({"": game_id});;
-    if(gamesList == null) throw 'No games exist in the DB';
+    const gamesList = await gamesCollect.findOne({"_id": ObjectId(game_id)});;
+    if(gamesList == null) throw 'No game exist in the DB with that id';
     gamesList._id = gamesList._id.toString();
 
     // let result =[]

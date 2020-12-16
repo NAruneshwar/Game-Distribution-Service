@@ -8,19 +8,25 @@ const reviews = mongoCollections.reviews;
 
 const reviewsByGameId = async(game_id)=>{
     const reviewsCollect = await reviews();
-    const reviewslist = await reviewsCollect.find({game_id});
+    const game = await games.getOne(game_id);
+    console.log(game)
+    
+    const reviewslist = await reviewsCollect.find({"game_id":game_id}).toArray();
     return(reviewslist)
 }
 
 const deleteGameById= async(review_id)=>{
     const reviewsCollect = await reviews();
-    const reviewsDelete = await reviewsCollect.find({review_id});
+    const reviewsDelete = await reviewsCollect.deleteALL({review_id});
+     if (deletionGame.deletedCount === 0) {
+        throw `Could not delete Game with id of ${id}`;
+      }
     return(reviewsDelete)
 }
 
 const addReviewForGame= async(game_id, userId, review, rating, media)=>{
-    const game = games.getOne(game_id);
-    const user = users.check_usernames(userId)
+    const game = await games.getOne(game_id);
+    // const user = await users.check_usernames(userId)
 
     if(!review|| typeof(review)!='string') {
         throw 'You must provide a review in string format';
@@ -55,11 +61,11 @@ const addReviewForGame= async(game_id, userId, review, rating, media)=>{
         media
     }
     const reviewsCollect = await reviews();
-    const reviewsAdd = await reviewsCollect.insertOne({newReview});
+    const reviewsAdd = await reviewsCollect.insertOne(newReview);
     if (reviewsAdd.insertedCount === 0) throw 'Could not add Game please debug';
     const newId = reviewsAdd.insertedId;
 
-    return newId
+    return newId.toString();
 }
 
 module.exports={
