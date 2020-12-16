@@ -56,14 +56,6 @@ const create = async (first_name,last_name,username,age,email,admin,state,countr
     if(admin.trim()=== ""){
         throw 'the given admin is empty string please provide the admin setting of the user';
     }
-    
-
-    if(!city|| typeof(city)!='string') {
-        throw 'You must provide a city for the book in string format';
-    }
-    if(city.trim()=== ""){
-        throw 'the given city is empty string please provide a city name'
-    }
 
     if(!state|| typeof(state)!='string') {
         throw 'You must provide the state for the game in string format';
@@ -94,7 +86,6 @@ const create = async (first_name,last_name,username,age,email,admin,state,countr
         age,
         email,
         admin,
-        city,
         state,
         country,
         hashedPassword,
@@ -109,10 +100,31 @@ const create = async (first_name,last_name,username,age,email,admin,state,countr
     return newId
 }
 
+const login = async(username,hash) =>{
+    if(!username|| typeof(username)!='string') {
+        throw 'You must provide a username for the user to login in a string format';
+    }
+    if(username.trim()=== ""){
+        throw 'the given username is empty string please provide a username'
+    }
+    if(!hash|| typeof(hash)!='string') {
+        throw 'You must provide a password for the user in a string format';
+    }
+    if(hash.trim()=== ""){
+        throw 'the given password is empty string please provide a password for the user'
+    }
+    
+    usersCollect = await users();
+    const userDetails = await usersCollect.findOne({"username": username})
+    userDetails['hashedPassword']= ""
+    console.log(userDetails)
+    return(userDetails)
+
+}
 
 const remove = async(id, name) => {
     if (!id) {
-      throw 'You must provide an id to delete game';
+      throw 'You must provide an id to delete user';
     }
     // if(typeof(id)!="string" || id.length!=24){
     //   throw 'You must only pass in id as string that is 24 charecters long'
@@ -152,5 +164,6 @@ const check_usernames = async(username) =>{
 module.exports = {
     create,
     remove,
-    check_usernames
+    check_usernames,
+    login
 }

@@ -10,10 +10,11 @@ const main = async () =>{
         newgame2 = await games.create("COD",["img32525235","img215135135"],["Action","FPS"],"11GB",["Windows 10","Android 10+"],["English","Hindi","cantonese"],"27+","https://www.callofduty.com/home","8.6/10",[""]);
         console.log(newgame2);
         allresult = await games.getAll();
-        // user1 = await users.create("Arun","Nalluri","Arun_95","22","arun.nalluri@gmail.com","yes","NYC","NY","USA","aelighaljg;gkagladnglkadnn")
+        // user1 = await users.create("Arun","Nalluri","Ar","22","arun.nalluri@gmail.com","yes","NY","USA","aelighaljg;gkagladnglkadnn")
         // console.log(user1)
         usersupdate = await games.update(newgame2,"COD2",["img32525235","img215135135"],["Action","FPS"],"11GB",["Windows 10","Android 10+"],["English","Hindi","cantonese"],"27+","https://www.callofduty.com/home","8.6/10",[""],10);
         console.log(usersupdate)
+        console.log(await users.login("Arun_91","aelighaljg;gkagladnglkadnn"))
         // console.log(newgame1)
         // console.log(await games.remove(newgame1))
     }
