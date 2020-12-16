@@ -196,6 +196,9 @@ const getAll = async() =>{
     const gamesCollect = await games();
     const gamesList = await gamesCollect.find({}).toArray();
     if(gamesList == null) throw 'No games exist in the DB';
+    for(i=0;i<gamesList.length;i++){
+        gamesList[i]._id = gamesList[i]._id.toString();
+    }
     // let result =[]
     // // console.log(Info.length)
     // for (let k=0; k<Info.length; k++){
