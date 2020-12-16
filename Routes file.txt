@@ -3,6 +3,7 @@ Routes
 Admin
 GET admin / -> Render admin login page
 POST admin /check -> verify admin credentials and redirect on admin's home page
+GET admin /admin-homepage -> Will render admin's home page
 
 For signing up a user
 GET signup / -> Will render signup page
