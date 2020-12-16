@@ -6,6 +6,10 @@ router.get('/', async (req, res) => {
     res.render("posts/admin-login", { title: "Log In" });
 });
 
+router.get('/homepage', async(req,res)=>{
+    res.render("posts/admin-homepage",{title: "Admin Homepage"});
+});
+
 router.post('/check', async (req, res) => {
     username = req.body.username
     password = req.body.password
@@ -13,7 +17,7 @@ router.post('/check', async (req, res) => {
     hashedPassword = await bcrypt.hash(password, 16)
     try{
     const admin = await logindata.admin_check(username, hashedPassword);
-    res.redirect('/admin/adminhomepage')
+    res.redirect('/admin/homepage')
     }
     catch(e){
         res.status(401).render('views/admin-login',{message: e})
