@@ -21,14 +21,13 @@ router.get('/', async (req, res) => {
 router.post('/check', async (req, res) => {
     username = req.body.username
     password = req.body.password
-    checkUsernamePassword(username, password)
-    hashedPassword = await bcrypt.hash(password, 16)
+    checkUsernamePassword(username, password);
     try{
-    const users = await logindata.check(username, hashedPassword);
-    res.redirect('/')
+    const users = await logindata.check(username, password);
+    res.redirect('/');
     }
     catch(e){
-        res.status(401).render('/',{message: e})
+        res.status(401).render("posts/login",{message: e})
     }
 });
 
