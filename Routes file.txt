@@ -3,7 +3,7 @@ Routes
 Admin
 GET admin / -> Render admin login page
 POST admin /check -> verify admin credentials and redirect on admin's home page
-GET admin /admin-homepage -> Will render admin's home page
+GET admin /homepage -> Will render admin's home page
 
 For signing up a user
 GET signup / -> Will render signup page
@@ -11,7 +11,7 @@ POST signup /newuser -> Will get data from the form and put it in database
 
 Login routes
 GET login / -> Will render login page
-POST login /check -> WIll check the credentials and redirect accordingly
+POST login /check -> WIll check the credentials and redirect to '/'
 
 Games routes
 GET games / -> will render browse games page (games category page according to diagram) which has various genres
