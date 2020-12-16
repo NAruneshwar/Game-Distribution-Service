@@ -25,6 +25,7 @@ router.post('/check', async (req, res) => {
     hashedPassword = await bcrypt.hash(password, 16)
     try{
     const users = await logindata.check(username, hashedPassword);
+    res.redirect('/')
     }
     catch(e){
         res.status(401).render('/',{message: e})
