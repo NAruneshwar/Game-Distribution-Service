@@ -23,5 +23,5 @@ app.use(
 configRoutes(app)
 
 app.listen(3000, () => {
-    console.log("Connected to the server");
+    console.log("Connected to the server at http://localhost:3000/");
 })

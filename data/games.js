@@ -199,6 +199,16 @@ const getAll = async() =>{
     for(i=0;i<gamesList.length;i++){
         gamesList[i]._id = gamesList[i]._id.toString();
     }
+    return gamesList
+  }
+
+
+  const getOne = async(game_id) =>{
+    const gamesCollect = await games();
+    const gamesList = await gamesCollect.findOne({"": game_id});;
+    if(gamesList == null) throw 'No games exist in the DB';
+    gamesList._id = gamesList._id.toString();
+
     // let result =[]
     // // console.log(Info.length)
     // for (let k=0; k<Info.length; k++){
@@ -217,18 +227,11 @@ const getAll = async() =>{
     return gamesList
   }
 
-
-
 const remove = async(id, name) => {
     if (!id) {
       throw 'You must provide an id to delete game';
     }
-    // if(typeof(id)!="string" || id.length!=24){
-    //   throw 'You must only pass in id as string that is 24 charecters long'
-    // }
-    // if(id.trim()===""){
-    //   throw 'Id can not be empty spaces'
-    // }
+   
     var re =  /^[0-9a-fA-F]+$/;
     if(!re.test(id)) {
       throw 'Given Input is not in hexadecimal please verify ID'
@@ -253,5 +256,6 @@ module.exports = {
     create,
     update,
     getAll,
+    getOne,
     remove
 }

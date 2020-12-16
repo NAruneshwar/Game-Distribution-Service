@@ -1,18 +1,65 @@
 // import all required files
 const mongoCollections = require('../config/mongoCollections.js');
 let { ObjectId } = require('mongodb');
+const games = require('./games')
+const users = require('./users')
 const reviews = mongoCollections.reviews;
 
 
 const reviewsByGameId = async(game_id)=>{
-
+    const reviewsCollect = await reviews();
+    const reviewslist = await reviewsCollect.find({game_id});
+    return(reviewslist)
 }
+
 const deleteGameById= async(review_id)=>{
-
+    const reviewsCollect = await reviews();
+    const reviewsDelete = await reviewsCollect.find({review_id});
+    return(reviewsDelete)
 }
 
-const addReviewForGame= async(game_id)=>{
+const addReviewForGame= async(game_id, userId, review, rating, media)=>{
+    const game = games.getOne(game_id);
+    const user = users.check_usernames(userId)
 
+    if(!review|| typeof(review)!='string') {
+        throw 'You must provide a review in string format';
+    }
+    if(review.trim()=== ""){
+        throw 'the given review is empty string please provide the review of the user';
+    }
+    if(!rating|| typeof(rating)!='string') {
+        throw 'You must provide a review in string format';
+    }
+    if(rating.trim()=== ""){
+        throw 'the given rating is empty string please provide the rating of the user';
+    }
+    try{
+        age = Number(rating)
+    }
+    catch(e){
+        throw 'Error provided rating is not a number.'
+    }
+    if(!media|| typeof(media)!='string') {
+        throw 'You must provide a media';
+    }
+    if(rating.trim()=== ""){
+        throw 'the given media is empty string';
+    }
+
+    let newReview ={
+        game_id, 
+        userId, 
+        review, 
+        rating, 
+        media
+    }
+    const reviewsCollect = await reviews();
+    const reviewsAdd = await reviewsCollect.insertOne({newReview});
+    if (reviewsAdd.insertedCount === 0) throw 'Could not add Game please debug';
+    const newId = reviewsAdd.insertedId;
+
+    return newId
 }
 
 module.exports={

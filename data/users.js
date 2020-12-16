@@ -104,21 +104,18 @@ const remove = async(id, name) => {
     if (!id) {
       throw 'You must provide an id to delete user';
     }
-    // if(typeof(id)!="string" || id.length!=24){
-    //   throw 'You must only pass in id as string that is 24 charecters long'
-    // }
-    // if(id.trim()===""){
-    //   throw 'Id can not be empty spaces'
-    // }
+    if(typeof(id)!="string" || id.length!=24){
+      throw 'You must only pass in id as string that is 24 charecters long'
+    }
+    if(id.trim()===""){
+      throw 'Id can not be empty spaces'
+    }
     var re =  /^[0-9a-fA-F]+$/;
     if(!re.test(id)) {
       throw 'Given Input is not in hexadecimal please verify ID'
     } 
-    // gametitle = await get(id)
-    // let reviewcount = booktitle.reviews.length
-    // console.log(movietitle)
     usersCollect = await users();
-    const deletionGame = await usersCollect.deleteOne({ _id: id });
+    const deletionGame = await usersCollect.deleteOne({ _id: ObjectId(id) });
       // console.log(deletionMovie);
       if (deletionGame.deletedCount === 0) {
         throw `Could not delete Game with id of ${id}`;
@@ -135,12 +132,33 @@ const check_usernames = async(username) =>{
         return true
     }
     return false
-    
+  }
 
+const check_id = async(userid) =>{
+    if (!userid) {
+        throw 'You must provide an userid to delete user';
+      }
+      if(typeof(userid)!="string" || userid.length!=24){
+        throw 'You must only pass in userid as string that is 24 charecters long'
+      }
+      if(userid.trim()===""){
+        throw 'Id can not be empty spaces'
+      }
+      var re =  /^[0-9a-fA-F]+$/;
+      if(!re.test(userid)) {
+        throw 'Given Input is not in hexadecimal please verify ID'
+      } 
+    const usersCollect = await users();
+    const usernameList = await usersCollect.findOne({"_id": ObjectId(userid)});
+    if(usernameList!=null){
+        return true
+    }
+    return false
   }
   
 module.exports = {
     create,
     remove,
-    check_usernames
+    check_usernames,
+    check_id
 }
