@@ -100,28 +100,6 @@ const create = async (first_name,last_name,username,age,email,admin,state,countr
     return newId
 }
 
-const login = async(username,hash) =>{
-    if(!username|| typeof(username)!='string') {
-        throw 'You must provide a username for the user to login in a string format';
-    }
-    if(username.trim()=== ""){
-        throw 'the given username is empty string please provide a username'
-    }
-    if(!hash|| typeof(hash)!='string') {
-        throw 'You must provide a password for the user in a string format';
-    }
-    if(hash.trim()=== ""){
-        throw 'the given password is empty string please provide a password for the user'
-    }
-    
-    usersCollect = await users();
-    const userDetails = await usersCollect.findOne({"username": username})
-    userDetails['hashedPassword']= ""
-    console.log(userDetails)
-    return(userDetails)
-
-}
-
 const remove = async(id, name) => {
     if (!id) {
       throw 'You must provide an id to delete user';
@@ -164,6 +142,5 @@ const check_usernames = async(username) =>{
 module.exports = {
     create,
     remove,
-    check_usernames,
-    login
+    check_usernames
 }
