@@ -149,8 +149,6 @@ const check_usernames = async(username) =>{
 
   }
   
-//make a new function that will get all users data - name it allUsers()... it will not have any parameters.
-
 module.exports = {
     create,
     remove,
