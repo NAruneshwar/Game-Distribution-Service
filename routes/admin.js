@@ -6,6 +6,18 @@ router.get('/', async (req, res) => {
     res.render("posts/admin-login", { title: "Log In" });
 });
 
+router.get('/add_game', async (req, res) => {
+    res.render("posts/add", { title: "Add Game" });
+});
+
+router.get('/delete_game', async (req, res) => {
+    res.render("posts/delete", { title: "Delete Game" });
+});
+
+router.get('/delete_review', async (req, res) => {
+    res.render("posts/deletereview", { title: "Delete Game" });
+});
+
 router.get('/homepage', async(req,res)=>{
     res.render("posts/admin-homepage",{title: "Admin Homepage"});
 });
