@@ -24,7 +24,7 @@ PATCH games /update/:id -> Accessible by admin only. Used to update a game's con
 
 Reviews Routes
 GET reviews /:game_id -> Will show reviews for game with specified ID
-POST reviews /:game_id -> Post reviews for the specified game
+POST reviews add/:game_id -> Post reviews for the specified game
 
 DELETE reviews /delete/:id -> Accessible by admin only. Delete review with that ID
 
