@@ -1,39 +1,38 @@
 <div class="gdata">
 
-    <h1>Game Title</h1>  
-
-    <hr>
-
+    <h1>{{data.name}}</h1>  
+    
     <dl> 
-
-        <img class="gdata-info" alt="{{info.name}}" src="{{info.image.medium}}"/>  
-
-        <hr>
         
-        <dt class="gdata-info">Genre: ########</dt> 
+        <img class="gdata-info" alt="{{data.name}}" src="{{data.image}}" id="game_img"/>
+        
+        <dt class="gdata-info">Genre: {{data.genre}}</dt> 
 
-        <dt class="gdata-info">Size: ########</dt> 
+        <dt class="gdata-info">Size: {{data.size}}</dt> 
        
-        <dt class="gdata-info">Compatibilty: ########</dt> 
+        <dt class="gdata-info">Compatibility: {{data.compatibility}}</dt> 
      
-        <dt class="gdata-info">Languages: ########</dt> 
+        <dt class="gdata-info">Languages: {{data.languages}}</dt> 
   
-        <dt class="gdata-info">Age: ########</dt> 
+        <dt class="gdata-info">Age Rating: {{data.age_rating}}</dt> 
  
-        <dt class="gdata-info">Website: ########</dt> 
+        <dt class="gdata-info">Website: {{data.website}}</dt> 
 
+        <dt class="gdata-info">Price: ${{data.price}}</dt> 
+
+        <form action="/payment/{{data._id}}" method="GET">
+        <input type="submit" class="buy" value="Buy">
+        </form>
         <hr>
 
-        <dt class="gdata-info">Price: ########</dt> 
-
-        <button class="buy">Buy</button>
-
-        <hr>
-
-        <dt class="gdata-info">Rating: ########</dt> 
+        <dt class="gdata-info">Average Rating: {{average_rating}}/10</dt> 
          
         <dt class="gdata-info">Reviews:</dt> 
-
+        {{#each reviews}}
+            <img src="">
+            <p><h4>Username:<span>{{username}}</span></h4>Rating by user:{{rating}}</p>
+            <p>{{review}}</p>
+        {{/each}}
     </dl> 
 
 </div> 
