@@ -125,49 +125,49 @@ router.post("/add", async (req, res) => {
   //for admin only... sessions required
   //Add games using this route
 
-  let name = req.body.name;
-  let image = req.body.image; //array
-  let genre = req.body.genre;
-  let size = req.body.size;
-  let compatibility = req.body.compatibility;
-  let languages = req.body.languages;
-  let age_rating = req.body.age_rating;
-  let website = req.body.website;
-  let rating = req.body.rating;
+  // let name = req.body.name;
+  // let image = req.body.image; //array
+  // let genre = req.body.genre;
+  // let size = req.body.size;
+  // let compatibility = req.body.compatibility;
+  // let languages = req.body.languages;
+  // let age_rating = req.body.age_rating;
+  // let website = req.body.website;
+  // let rating = req.body.rating;
 
-  checkForGame(
-    name,
-    image,
-    genre,
-    size,
-    compatibility,
-    languages,
-    age_rating,
-    website,
-    rating
-  );
-  try {
-    const game = await gamesData.create(
-      name,
-      image,
-      genre,
-      size,
-      compatibility,
-      languages,
-      age_rating,
-      website,
-      rating,
-      []
-    );
-    res.render("posts/admin-homepage", {
-      title: "Admin Homepage",
-      message: "Game Added",
-    });
-  } catch (e) {
-    res
-      .status(401)
-      .render("posts/admin-homepage", { title: "Admin Homepage", message: e });
-  }
+  // checkForGame(
+  //   name,
+  //   image,
+  //   genre,
+  //   size,
+  //   compatibility,
+  //   languages,
+  //   age_rating,
+  //   website,
+  //   rating
+  // );
+  // try {
+  //   const game = await gamesData.create(
+  //     name,
+  //     image,
+  //     genre,
+  //     size,
+  //     compatibility,
+  //     languages,
+  //     age_rating,
+  //     website,
+  //     rating,
+  //     []
+  //   );
+  //   res.render("posts/admin-homepage", {
+  //     title: "Admin Homepage",
+  //     message: "Game Added",
+  //   });
+  // } catch (e) {
+  //   res
+  //     .status(401)
+  //     .render("posts/admin-homepage", { title: "Admin Homepage", message: e });
+  // }
 });
 
 router.post("/delete/:game_id", async (req, res) => {
