@@ -5,9 +5,16 @@ const gamesdata = require('../data/games')
 const usersdata = require('../data/users')
 
 router.get('/', async (req, res) => {
+    let userLoggedIn = false
+    let userId = req.session.AuthCookie
+    if(!userId){
+        userLoggedIn = false
+    }else{
+        userLoggedIn=true
+    }
     if (req.session.user) {
         if (req.session.user.admin) {
-            res.render("posts/admin-homepage", { title: "Admin Homepage" });
+            res.render("posts/admin-homepage", { title: "Admin Homepage", userLoggedIn: userLoggedIn });
         }
     } else {
         res.redirect('/')

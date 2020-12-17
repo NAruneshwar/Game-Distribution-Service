@@ -1,34 +1,4 @@
 (function ($) {
-  // let password = $("#login_btn");
-  // password.submit(function (e) {
-  $("#login_btn").submit(function (e) {
-    e.preventDefault();
-    // function passwordcheck() {
-    let username = $("#username").val();
-    let password = $("#password").val();
-    let userData = {
-      username: username,
-      password: password,
-    };
-    console.log(username);
-    $.ajax({
-      url: "/login/check",
-      type: "POST",
-      data: userData,
-      // error: function (xhr, status) {
-      //   console.log("Sorry, there was a problem!");
-      // },
-      complete: function (returnData) {
-        if (returnData !== "true") {
-          $("#checkusername").html("this username is already taken.");
-          $("#checkusername").show();
-        } else {
-          $("#checkusername").empty();
-          $("#checkusername").hide();
-        }
-      },
-    });
-  });
   //   $(document).on("change", ".password", function () {
   //     alert(this.value);
   //   });
@@ -65,30 +35,26 @@
   //   $(".retypepassword").on("change", function myFunction() {
   //   $("#retypepassword").onchange((e) => {
 
-  $("#username").change(function () {
-    let username = $("#username").val();
-    // alert($("#username").val());
-    // alert(username);
-    $.ajax({
-      url: "signup/username",
-      type: "POST",
-      data: $("#username").val(),
-      error: function (xhr, status) {
-        console.log("Sorry, there was a problem!");
-        // $("#checkusername").html("this username is already taken.");
-        // $("#checkusername").show();
-      },
-      success: function (returnData) {
-        if (returnData !== "true") {
-          $("#checkusername").html("this username is already taken.");
-          $("#checkusername").show();
-        } else {
-          $("#checkusername").empty();
-          $("#checkusername").hide();
-        }
-      },
-    });
-  });
+  //   $("#username").change(function () {
+  //     let username = $("#username").val();
+  //     $.ajax({
+  //       url: "signup/username",
+  //       type: "POST",
+  //       data: $("#username").val(),
+  //       error: function (xhr, status) {
+  //         console.log("Sorry, there was a problem!");
+  //       },
+  //       success: function (returnData) {
+  //         if (returnData !== "true") {
+  //           $("#checkusername").html("this username is already taken.");
+  //           $("#checkusername").show();
+  //         } else {
+  //           $("#checkusername").empty();
+  //           $("#checkusername").hide();
+  //         }
+  //       },
+  //     });
+  //   });
 
   $("#password").change(function () {
     // var password = $("#password").val();

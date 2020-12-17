@@ -24,6 +24,7 @@ router.post("/check", async (req, res) => {
   username = req.body.username;
   password = req.body.password;
   checkUsernamePassword(username, password);
+  // console.log(username);
   try {
     const users = await logindata.check(username, password);
     if (users != null) {
@@ -36,7 +37,7 @@ router.post("/check", async (req, res) => {
       res.redirect("/");
       return;
     }
-    return res.status(401).render("posts/login", {
+    res.status(401).render("posts/login", {
       message: "Username or password is not correct",
     });
     return;
