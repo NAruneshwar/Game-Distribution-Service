@@ -9,14 +9,14 @@
         <a href="/games/genre" class="wb">Browse</a>
     </div>
     <div id="box" class="col-xs-12 col-sm-12 col-md-12 list_games">
-        <h2>List of Games</h2>
+        <h1>List of Games</h1>
         {{#each data}}
         <div class="col-xs-12 col-sm-6 col-md-3">
             <div class="card">
             <a href="/games/{{_id}}">
                 <img src="/public/images/image_not_available.jpg" alt="Avatar" class="card-image">
                 <div class="card-container">
-                    <h3><b>{{name}}</b></h3> 
+                    <h2><b>{{name}}</b></h2> 
                 {{!-- {{#each genre }}<p>{{i}}</p>{{/each}} --}}
                 </div>
             </a>

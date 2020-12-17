@@ -11,16 +11,13 @@ const about = require("./about");
 
 const constructorMethod = (app) => {
   app.use("/admin", adminroutes);
-  app.use("/about", (req, res) => {
-    res.status(200).sendFile(path.resolve("public/about.html"));
-  });
   app.use("/profile", profileroutes);
   app.use("/reviews", reviewroutes);
   app.use("/games", gamesroutes);
   app.use("/login", loginroutes);
   app.use("/signup", signuproutes);
   app.use("/payment", paymentroutes);
-  app.use("/users",userroutes);
+  app.use("/users", userroutes);
   app.use("/about", about);
   app.use("/users", userroutes);
   app.get("/", (req, res) => {
