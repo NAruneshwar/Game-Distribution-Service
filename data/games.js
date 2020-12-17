@@ -138,7 +138,6 @@ const remove = async (id, name) => {
 
 module.exports = {
   create,
-  update,
   getAll,
   getOne,
   remove
