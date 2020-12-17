@@ -44,35 +44,35 @@
 } */
 
 .navi {
-    width: 100%;
-    background-color: rgba(17, 73, 138);
+  width: 100%;
+  background-color: rgba(17, 73, 138);
 }
 
 .navi ul {
-    text-align: center;
+  text-align: center;
 }
 
 .navi ul li {
-    list-style: none;
-    display: inline-block;
+  list-style: none;
+  display: inline-block;
 }
 
 .navi ul li a {
-    display: block;
-    text-decoration: none;
-    text-transform: uppercase;
-    color: white;
-    font-size: 20px;
-    letter-spacing: 2px;
-    font-weight: 600;
-    padding: 25px;
-    transition: all ease 0.3s;
+  display: block;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: white;
+  font-size: 20px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  padding: 25px;
+  transition: all ease 0.3s;
 }
 
 .navi ul li a:hover {
-    background-color: #4095c6;
+  background-color: #4095c6;
 }
- 
+
 .welcome {
   color: #11498a;
   text-align: center;
@@ -471,10 +471,10 @@ span.price {
 }
 
 .about {
-    width: 75%;
-    box-shadow: 0 0 3px 0 #11498a;
-    background: white;
-    padding: 20px;
-    margin: 5% auto 0;
-    text-align: left;
+  width: 75%;
+  box-shadow: 0 0 3px 0 #11498a;
+  background: white;
+  padding: 20px;
+  margin: 5% auto 0;
+  text-align: left;
 }
