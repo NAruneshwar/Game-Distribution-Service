@@ -136,9 +136,27 @@ const remove = async (id, name) => {
   return name;
 }
 
+const getByGenre = async(genre) =>{
+  if(!genre|| typeof(genre)!='string') {
+    throw 'You must provide a genre for the game in a string format';
+}
+if(genre.trim()=== ""){
+    throw 'the given genre is empty string'
+}
+gamesCollect = await games();
+const gamesList = await gamesCollect.find({"genre":genre}).toArray();
+if(gamesList == null) throw 'No games exist in the DB';
+for(i=0;i<gamesList.length;i++){
+    gamesList[i]._id = gamesList[i]._id.toString();
+}
+
+  return gamesList
+}
+
 module.exports = {
   create,
   getAll,
   getOne,
-  remove
+  remove,
+  getByGenre
 }
