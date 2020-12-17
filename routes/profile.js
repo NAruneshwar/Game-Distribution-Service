@@ -23,6 +23,16 @@ router.get("/:user_id", async (req, res) => {
   }
 });
 
+router.get('/', async(req,res)=>{
+  if (req.session.user) {
+    if(req.session.user.uid){
+      res.redirect('/profile/'+req.session.user.uid)
+    }
+  }else{
+    res.redirect('/')
+  }
+});
+
 router.delete("/delete/:user_id", async (req, res) => {
   //for admin only... sessions required
   //Delete a player's profile.

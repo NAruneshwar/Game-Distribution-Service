@@ -1,8 +1,13 @@
 const express = require("express");
 const router = express.Router();
-// const multer = require("multer")
-// const bodyParser = require("body-parser");
-// const fileUpload = require('express-fileupload');
+const multer1 = require('../multer');
+const cloudinary = require('../cloudinary');
+const path = require('path');
+const bodyParser = require('body-parser');
+//file system
+const fs = require('fs');
+const { url } = require('inspector');
+const static = express.static(__dirname + '/public');
 
 const gamesData = require("../data/games");
 const reviewsData = require("../data/reviews");
@@ -142,7 +147,10 @@ router.get("/:game_id", async (req, res) => {
       reviewsuser.push({ username: usersname.username, review: reviews[i].review, rating: reviews[i].rating })
     }
     let average_rating = ratingsum / total_ratings
-    res.status(200).render("posts/game", { title: game.name, data: game, reviews: reviewsuser, average_rating: average_rating });
+    if(req.session.user.uid){
+      user_session=req.session.user.uid
+    }
+    res.status(200).render("posts/game", { title: game.name, data: game, reviews: reviewsuser, average_rating: average_rating, user_session: user_session });
   } catch (e) {
     res.status(404).render("posts/game", { title: "Home page", message: e });
   }

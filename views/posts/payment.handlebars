@@ -4,9 +4,8 @@
 Price: {{price}}<br>
 Tax: 8%<br>
 Total_price: {{total_price}}<br>
-
 <form action="/payment/success" method="post">
     <input type="hidden" value={{game._id}} name="game_id">
-    <input type="hidden" value="5fdb4a999f3e0d40e803cd9a" name="user_id">
+    <input type="hidden" value={{user_id}} name="user_id">
     <input type="submit"/>
 </form>
