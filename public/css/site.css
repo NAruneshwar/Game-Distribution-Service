@@ -371,7 +371,6 @@ a.wb:hover {
 }
 
 .buy {
-  
   margin-bottom: 30px;
   margin: 12px 0;
   background: #11498a;
@@ -385,6 +384,7 @@ a.wb:hover {
   outline: none;
   cursor: pointer;
   font-weight: bold;
+  width: fit-content;
 }
 
 .card {
@@ -499,3 +499,36 @@ span.price {
     color: #4095c6;
 }
 
+.order {
+    width: 70%;
+    box-shadow: 0 0 3px 0 #11498a;
+    background: white;
+    padding: 20px;
+    margin: 8% auto;
+    text-align: left;
+    margin: 5% 15%;
+}
+
+.order h1 {
+    color: #11498a;
+    margin-bottom: 30px;
+}
+
+.order-item {
+    border-radius: 10px;
+    padding: 10px;
+    margin: 12px 0;
+    width: fit-content;
+    border: 1px solid #11498a;
+    outline: none;
+    font-size: 20px;
+    color: #11498a;
+    font-weight: bold;
+}
+
+.order-price {
+    margin: 5px 0;
+    font-size: 18px;
+    color: #11498a;
+    font-weight: bold;
+}
