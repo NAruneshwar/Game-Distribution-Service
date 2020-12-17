@@ -176,11 +176,37 @@ const getAllUsers = async () => {
     return usernameList
 }
 
+const getUserNameById = async(userId)=>{
+    const usersCollect = await users();
+    let  user= await usersCollect.findOne({_id: objectId(userId)},{ projection: { _id:0 ,username: 1 }});
+    if(user==null){
+        return "[username deleted]"
+    }
+    return user
+}
+
+const getUserById = async(userId)=>{
+    const usersCollect = await users();
+    let  user= await usersCollect.findOne({_id: objectId(userId)});
+    if(user==null){
+        throw`User not found`
+    }
+    return user
+}
+
+const addGameToProfile = async(game_id)=>{
+    
+
+}
+
 module.exports = {
     create,
     remove,
     check_usernames,
     check_user_email,
     check_id,
-    getAllUsers
+    getAllUsers,
+    getUserNameById,
+    getUserById,
+    addGameToProfile
 }
