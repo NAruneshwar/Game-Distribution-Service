@@ -1,9 +1,14 @@
 <div class="gen">
 
     <h1>Games available in selected Genre:</h1>
-
+    {{message}}
     <div>
-        <ul></ul>
+        <ul>
+    {{#each data}}
+    <li><a href="/games/{{id}}">{{name}}</a></li>
+    {{/each}}
+    </ul>
     </div>
+     
 
 </div>
