@@ -373,6 +373,7 @@ a.wb:hover {
 .buy {
   
   margin-bottom: 30px;
+  margin: 12px 0;
   background: #11498a;
   color: white;
   width: 9%;
@@ -380,7 +381,6 @@ a.wb:hover {
   border-radius: 5px;
   font-size: 14px;
   text-align: center;
-
   border: none;
   outline: none;
   cursor: pointer;
