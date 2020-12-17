@@ -77,6 +77,7 @@ const create = async (first_name,last_name,username,age,email,admin,state,countr
     if(hashedPassword.trim()=== ""){
         throw 'the given hashedPassword is empty string please provide a hashedPassword'
     }
+
   
     email = email.toLowerCase();
 
@@ -170,6 +171,7 @@ const getAllUsers = async () => {
     }
     for (i = 0; i < usernameList.length; i++) {
         usernameList[i]._id = usernameList[i]._id.toString();
+        usernameList[i].hashedPassword='';
     }
     return usernameList
 }
