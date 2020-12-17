@@ -5,7 +5,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 cloudinary.config({
   cloud_name: "naruneshwar",
-  api_key: process.env.CLOUDINARY_API_KEY,
+  api_key: "197211391234383",
   api_secret: "K98dXvHF0nIH2JUqUuN_X7fUGgA",
 });
 

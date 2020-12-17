@@ -3,8 +3,11 @@ const app = express()
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const configRoutes = require('./routes')
-// const bodyParser = require('body-parser');
-// const fileUpload = require('express-fileupload')
+const multer = require('multer');
+const path = require('path');
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 const static = express.static(__dirname + '/public');
 const exphbs = require("express-handlebars");
