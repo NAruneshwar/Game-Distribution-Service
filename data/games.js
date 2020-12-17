@@ -120,7 +120,7 @@ const getAll = async () => {
 
 const getOne = async (game_id) => {
   const gamesCollect = await games();
-  const gamesList = await gamesCollect.findOne({ "_id": ObjectId(game_id) });;
+  const gamesList = await gamesCollect.findOne({ "_id": objectId(game_id) });;
   if (gamesList == null) throw 'No game exist in the DB with that id';
   gamesList._id = gamesList._id.toString();
   return gamesList
@@ -129,7 +129,7 @@ const getOne = async (game_id) => {
 const remove = async (id, name) => {
   check_id(id)
   gamesCollect = await games();
-  const deletionGame = await gamesCollect.deleteOne({ _id: id });
+  const deletionGame = await gamesCollect.deleteOne({ _id: objectId(id) });
   if (deletionGame.deletedCount === 0) {
     throw `Could not delete game.`;
   }
