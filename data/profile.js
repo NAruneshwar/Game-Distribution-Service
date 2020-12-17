@@ -3,7 +3,7 @@ const mongoCollections = require("../config/mongoCollections.js");
 let { ObjectId } = require("mongodb");
 const users = mongoCollections.users;
 
-const deleteProfileById = async (user_id) => {};
+// use data/users.js  remove function for deleting profile
 
 const getUserInfo = async (user_id) => {
   const usersCollect = await users();
@@ -14,6 +14,5 @@ const getUserInfo = async (user_id) => {
 };
 
 module.exports = {
-  deleteProfileById,
   getUserInfo,
 };
