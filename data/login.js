@@ -27,7 +27,7 @@ const check = async (username, hash) => {
     if (compared == false) {
         throw `Username or password is Incorrect!`
     }
-    return;
+    return userDetails._id;
 }
 
 // create a function called admin_check(username,hashedPassword) to check username and password of admin

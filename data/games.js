@@ -25,7 +25,8 @@ const create = async (
   age_rating,
   website,
   rating,
-  reviews
+  reviews,
+  price
 ) => {
   const gamesCollect = await games();
 
@@ -90,6 +91,13 @@ const create = async (
   }
   if (reviews.length === 0) throw "You must provide at least one reviews.";
 
+  if (!price || typeof price != "string") {
+    throw "You must provide a price for the book in string format";
+  }
+  if (price.trim() === "") {
+    throw "the given price is empty string please provide the price of the game";
+  }
+
   let newGame = {
     name,
     image,
@@ -102,6 +110,7 @@ const create = async (
     rating,
     reviews,
     no_of_downloads: 0,
+    price
   };
   const insertInfo = await gamesCollect.insertOne(newGame);
   if (insertInfo.insertedCount === 0) throw "Could not add Game please debug";
