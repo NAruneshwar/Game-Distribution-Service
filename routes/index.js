@@ -15,7 +15,7 @@ const constructorMethod = (app) => {
   app.use("/signup", signuproutes);
   app.use("/payment", paymentroutes);
   app.get("/", (req, res) => {
-    res.render("posts/homepage", { title: "Home page" });
+    res.redirect('/games/')
   });
   app.use("*", (req, res) => {
     res.status(404).render("posts/errors", {
