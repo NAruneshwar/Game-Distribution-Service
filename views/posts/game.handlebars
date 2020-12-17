@@ -31,11 +31,30 @@
          {{#if user_session}}
             <form action="/reviews/add/{{data._id}}" method="POST">
                 <input type="hidden" name="user_id" value={{user_session}}>
-                {{!-- <input type="hidden" name="game_id" value={{}}> --}}
-                <input type="file" name="image">
-                <input type="text" name="comment" placeholder="Your Review..">
-                <input type="number" name="rating" placeholder="Rating" max="10" min="0">
-                <input type="submit" value="Post..">
+
+                <dl>
+                    <dt class="gdata-info">
+                        <label>
+                            Image:<input class="rv" type="file" name="image">
+                        </label>
+                    </dt>
+
+                    <dt class="gdata-info">
+                        <label>
+                            Comment: <input class="rv" type="text" name="comment" placeholder="Write a review here">
+                        </label>
+                    </dt>
+
+                    <dt class="gdata-info">
+                        <label>
+                            Rating: <input class="rv" type="number" name="rating" placeholder="Rating" max="10" min="1">
+                        </label>
+                    </dt>
+
+
+                </dl>
+               
+                <input class="buy" type="submit" value="Post">
             </form>
          {{/if}}
         <dt class="gdata-info">Reviews:</dt> 
