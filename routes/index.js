@@ -7,6 +7,7 @@ const adminroutes = require("./admin");
 const profileroutes = require("./profile");
 const paymentroutes = require("./payment");
 const userroutes = require("./users");
+const about = require("./about");
 
 const constructorMethod = (app) => {
   app.use("/admin", adminroutes);
@@ -19,6 +20,8 @@ const constructorMethod = (app) => {
   app.use("/login", loginroutes);
   app.use("/signup", signuproutes);
   app.use("/payment", paymentroutes);
+  app.use("/users",userroutes);
+  app.use("/about", about);
   app.use("/users", userroutes);
   app.get("/", (req, res) => {
     res.redirect("/games/");
