@@ -18,7 +18,9 @@ router.post('/add/:game_id',async(req,res)=>{
     let game_id=req.params.game_id
     data=req.body
     try{
-        //get all rquired fields from data
+        user_id=data.user_id
+        review = data.review
+        rating  = data.rating
     }catch(e){
 
     }

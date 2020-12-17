@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const gamesData = require("../data/games");
+const reviewsData = require("../data/reviews");
+const userData = require("../data/users");
 
 function checkForGame(
   name,
@@ -111,13 +113,24 @@ router.get("/deletegetAll", async (req, res) => {
 });
 
 router.get("/:game_id", async (req, res) => {
-  //Will show an individual game with that ID
+  //Will show an individual game with that ID and it's reviews
   const game_id = req.params.game_id;
   try {
+    const reviews = await reviewsData.reviewsByGameId(game_id)
+    let total_ratings = reviews.length
     const game = await gamesData.getOne(game_id);
-    res.status(200).render("posts/game", { title: game.title, data: game });
+    let reviewsuser = []
+    let ratingsum = 0
+    for (i = 0; i < reviews.length; i++) {
+      ratingsum = ratingsum + Number(reviews[i].rating)
+      let user_id = reviews[i].userId
+      let usersname = await userData.getUserNameById(user_id);
+      reviewsuser.push({ username: usersname.username, review: reviews[i].review, rating: reviews[i].rating })
+    }
+    let average_rating = ratingsum/total_ratings
+    res.status(200).render("posts/game", { title: game.name, data: game, reviews: reviewsuser, average_rating: average_rating });
   } catch (e) {
-    res.status(404).render("posts/homepage", { title: "Home page", message: e });
+    res.status(404).render("posts/game", { title: "Home page", message: e });
   }
 });
 
