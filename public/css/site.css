@@ -469,3 +469,13 @@ span.price {
 .login_message {
   color: red;
 }
+
+.about {
+    width: 75%;
+    box-shadow: 0 0 3px 0 #11498a;
+    background: white;
+    padding: 20px;
+    margin: 5% auto 0;
+    text-align: left;
+
+}

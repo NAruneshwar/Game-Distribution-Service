@@ -79,6 +79,7 @@ router.get("/", async (req, res) => {
   //this is for home page to show all games
   try {
     const games = await gamesData.getAll();
+  
     if (games == null) {
       throw `No games found`;
     }
