@@ -3,6 +3,8 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const logindata = require("../data/login");
 const userData = require("../data/users");
+const session = require('express-session')
+
 
 function checkUsernamePassword(uname, pswd) {
   uname = uname.trim();
@@ -27,8 +29,7 @@ router.post("/check", async (req, res) => {
     const users = await logindata.check(username, password);
     if(users!=null){
       // console.log(users)
-      req.session.user = {"username": username};
-
+      req.session.user = {"username": username,"uid":users._id,"admin":users.admin};
       res.redirect("/");
     }
     res.status(401).render("posts/login", { message: "Username or password is not correct" });
@@ -44,5 +45,25 @@ router.get("/check_username", async (req, res) => {
   const result = await userData.check_usernames(username);
   return result;
 });
+
+
+router.get("/logout",async(req,res)=>{
+  if (req.session.user) {
+    const newDelCookie = new Date();
+    newDelCookie.setHours(newDelCookie.getHours() - 1);
+    res.cookie('lastAccessed', '', { expires: newDelCookie });
+    res.clearCookie('lastAccessed');
+
+    req.session.destroy();
+    return res.redirect("/");
+}
+else{
+  return res.redirect("/");
+
+}
+});
+
+
+
 
 module.exports = router;

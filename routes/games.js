@@ -1,12 +1,18 @@
 const express = require("express");
 const router = express.Router();
+const multer = require("multer")
+const bodyParser = require("body-parser");
+const fileUpload = require('express-fileupload');
+
 const gamesData = require("../data/games");
 const reviewsData = require("../data/reviews");
 const userData = require("../data/users");
 
+
+
 function checkForGame(
   name,
-  image,
+  imagename,
   genre,
   size,
   compatibility,
@@ -137,9 +143,11 @@ router.get("/:game_id", async (req, res) => {
 router.post("/add", async (req, res) => {
   //for admin only... sessions required
   //Add games using this route
+  
 
   let name = req.body.name;
-  let image = req.body.image; //array
+  console.log(req.files.image)
+//   let {imagename,imagedata} = req.files.image; //array
   let genre = req.body.genre.split(',');
   let size = req.body.size;
   let compatibility = req.body.compatibility.split(',');
@@ -148,6 +156,7 @@ router.post("/add", async (req, res) => {
   let website = req.body.website;
   let price = req.body.price;
 //   console.log(image)
+  
 //   let rating = req.body.rating;
 
   checkForGame(
