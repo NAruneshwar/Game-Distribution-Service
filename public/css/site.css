@@ -412,12 +412,12 @@ a.wb:hover {
 }
 
 .cart {
-    width: 50%;
-    box-shadow: 0 0 3px 0 #11498a;
-    background: white;
-    padding: 20px;
-    margin: 5% auto 0;
-    text-align: left;
+  width: 50%;
+  box-shadow: 0 0 3px 0 #11498a;
+  background: white;
+  padding: 20px;
+  margin: 5% auto 0;
+  text-align: left;
 }
 
 .cart h1 {
@@ -425,11 +425,11 @@ a.wb:hover {
   margin-bottom: 30px;
 }
 
-span.price { 
-    float: right;
+span.price {
+  float: right;
 }
 
-#game_img{
+#game_img {
   border: 1px solid #000;
   border-radius: 4px;
   padding: 5px;
