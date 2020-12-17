@@ -99,12 +99,10 @@ router.get("/deletegetAll", async (req, res) => {
       .status(200)
       .render("posts/delete", { title: "Delete Game", data: allGames });
   } catch (e) {
-    res
-      .status(404)
-      .render("posts/delete", {
-        title: "Delete Game",
-        message: "Something went wrong!",
-      });
+    res.status(404).render("posts/delete", {
+      title: "Delete Game",
+      message: "Something went wrong!",
+    });
   }
 });
 
