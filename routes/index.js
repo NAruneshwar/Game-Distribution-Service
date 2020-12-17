@@ -1,3 +1,4 @@
+const path = require("path")
 const gamesroutes = require("./games");
 const reviewroutes = require("./reviews");
 const loginroutes = require("./login");
@@ -8,6 +9,9 @@ const paymentroutes = require("./payment");
 
 const constructorMethod = (app) => {
   app.use("/admin", adminroutes);
+  app.use('/about',(req,res)=>{
+    res.status(200).sendFile(path.resolve("public/about.html"))
+  })
   app.use("/profile", profileroutes);
   app.use("/reviews", reviewroutes);
   app.use("/games", gamesroutes);
