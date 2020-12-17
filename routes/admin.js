@@ -5,31 +5,45 @@ const gamesdata = require('../data/games')
 const usersdata = require('../data/users')
 
 router.get('/', async (req, res) => {
-    res.render("posts/admin-homepage", { title: "Admin Homepage" });
+    if (req.session.user) {
+        if (req.session.user.admin) {
+            res.render("posts/admin-homepage", { title: "Admin Homepage" });
+        }
+    } else {
+        res.redirect('/')
+    }
 });
 
 router.get('/add_game', async (req, res) => {
+    if (req.session.user) {
+        if (req.session.user.admin) {
     res.render("posts/add", { title: "Add Game" });
+        }
+    }else{
+        res.redirect('/')
+    }
 });
 
 router.get('/delete_game', async (req, res) => {
-    const games = await gamesdata.getAll();
-    res.render("posts/delete", { title: "Delete Game", data: games});
+    if (req.session.user) {
+        if (req.session.user.admin) {
+            const games = await gamesdata.getAll();
+            res.render("posts/delete", { title: "Delete Game", data: games });
+        }
+    } else {
+        res.redirect('/')
+    }
 });
 
-// router.get('/delete_review', async (req, res) => {
-
-//     const review = await reviewdata.deleteReviewById()
-//     res.render("posts/deletereview", { title: "Delete Game" });
-// });
-
-// router.get('/homepage', async(req,res)=>{
-//     res.render("posts/admin-homepage",{title: "Admin Homepage"});
-// });
-
 router.get('/delete_user', async (req, res) => {
-    const users = await usersdata.getAllUsers()
-    res.render("posts/deleteuser", { title: "Delete User", data: users });
+    if (req.session.user) {
+        if (req.session.user.admin) {
+            const users = await usersdata.getAllUsers()
+            res.render("posts/deleteuser", { title: "Delete User", data: users });
+        }
+    } else {
+        res.redirect('/')
+    }
 })
 
 router.post('/check', async (req, res) => {

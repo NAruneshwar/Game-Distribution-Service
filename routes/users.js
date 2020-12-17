@@ -4,6 +4,8 @@ const userData = require('../data/users')
 
 router.post('/delete/:user_id', async (req, res) => { //for admin only... sessions required
     //Delete user with the ID
+    if (req.session.user) {
+        if (req.session.user.admin) {
     try {
         let user_id = req.params.user_id
         const deletedUser = await userData.remove(user_id)
@@ -12,6 +14,11 @@ router.post('/delete/:user_id', async (req, res) => { //for admin only... sessio
         }
     } catch (e) {
         res.status(401).render("posts/deleteuser", { title: "Admin Homepage", message: e });
+    }
+}
+    }
+    else{
+        res.redirect("/")
     }
 });
 

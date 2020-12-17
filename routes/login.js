@@ -59,7 +59,6 @@ router.get("/logout",async(req,res)=>{
 }
 else{
   return res.redirect("/");
-
 }
 });
 
