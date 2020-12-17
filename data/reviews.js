@@ -25,7 +25,7 @@ const reviewsByGameId = async (game_id) => {
     if (game === null) {
         throw `Game not found.`
     }
-    const reviewslist = await reviewsCollect.find({ "game_id": objectId(game_id) }).toArray();
+    const reviewslist = await reviewsCollect.find({ "game_id": game_id }).toArray();
     if (reviewslist == null) {
         throw `No Reviews Yet`
     }
@@ -72,11 +72,11 @@ const addReviewForGame = async (game_id, userId, review, rating, media) => {
     }
 
     let newReview = {
-        game_id: game_id,
-        userId: userId,
-        review: review,
-        rating: rating,
-        media: media
+        game_id,
+        userId,
+        review,
+        rating,
+        media
     }
     const reviewsCollect = await reviews();
     const reviewsAdd = await reviewsCollect.insertOne(newReview);

@@ -21,19 +21,20 @@ router.post('/add/:game_id', async (req, res) => {
             data = req.body
             try {
                 let user_id = data.user_id;
-                let review = data.comment;
+                let comment = data.comment;
                 let rating = data.rating;
                 let image = "some string for image";
-                console.log(user_id)
-                console.log(review)
-                console.log(rating)
-                console.log(game_id)
+                // console.log(user_id)
+                // console.log(review)
+                // console.log(rating)
+                // console.log(game_id)
                 // NOT WORKING
-                const reviewAdded = reviewsData.addReviewForGame(game_id, user_id, comment, rating, image);
+                const reviewAdded = await reviewsData.addReviewForGame(game_id, user_id, comment, rating, image);
                 console.log(reviewAdded)
+                res.redirect("/")
 
             } catch (e) {
-                res.status(401).redirect("/");
+                res.status(401).redirect("/games/".game_id);
             }
         }
     } else {

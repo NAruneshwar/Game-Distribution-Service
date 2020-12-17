@@ -136,21 +136,26 @@ router.get("/:game_id", async (req, res) => {
   const game_id = req.params.game_id;
   try {
     const reviews = await reviewsData.reviewsByGameId(game_id)
-    let total_ratings = reviews.length
+    var total_ratings = reviews.length
     const game = await gamesData.getOne(game_id);
-    let reviewsuser = []
-    let ratingsum = 0
+    var reviewsuser = []
+    var ratingsum = 0
     for (i = 0; i < reviews.length; i++) {
       ratingsum = ratingsum + Number(reviews[i].rating)
-      let user_id = reviews[i].userId
-      let usersname = await userData.getUserNameById(user_id);
+      var user_id = reviews[i].userId
+      var usersname = await userData.getUserNameById(user_id);
       reviewsuser.push({ username: usersname.username, review: reviews[i].review, rating: reviews[i].rating })
     }
-    let average_rating = ratingsum / total_ratings
-    if(req.session.user.uid){
-      user_session=req.session.user.uid
+    var average_rating = ratingsum / total_ratings
+    
+    if(req.session.user){
+      if(req.session.user.uid){
+        user_session=req.session.user.uid
+        res.status(200).render("posts/game", { title: game.name, data: game, reviews: reviewsuser, average_rating: average_rating, user_session: user_session });
+      }
     }
-    res.status(200).render("posts/game", { title: game.name, data: game, reviews: reviewsuser, average_rating: average_rating, user_session: user_session });
+    res.status(200).render("posts/game", { title: game.name, data: game, reviews: reviewsuser, average_rating: average_rating });
+
   } catch (e) {
     res.status(404).render("posts/game", { title: "Home page", message: e });
   }
