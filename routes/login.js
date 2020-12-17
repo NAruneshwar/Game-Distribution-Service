@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const logindata = require('../data/login')
+const userData  = require('../data/users')
 
 function checkUsernamePassword(uname, pswd) {
     uname = uname.trim()
@@ -29,6 +30,16 @@ router.post('/check', async (req, res) => {
     catch(e){
         res.status(401).render("posts/login",{message: e})
     }
+});
+
+router.get('/check_user_email',async(req,res)=>{
+    
+});
+
+router.get('/check_username', async(req,res)=>{
+    let username=req.params.username
+    const result = await userData.check_usernames(username)
+    return result
 });
 
 module.exports = router;
