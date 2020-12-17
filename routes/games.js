@@ -51,8 +51,17 @@ function checkForGame(name, image, genre, size, compatibility, languages, age_ra
 
 }
 
-router.get('/', async (req, res) => {
-    res.render("posts/genre", { title: "Browse Genres" });
+router.get('/', async (req, res) => { //this is for home page to show all games
+    try{
+        const games=await gamesData.getAll();
+        if(games==null){
+            throw `No games found`
+        }
+        res.status(404).render("posts/homepage", { title: "Home page", data: games });
+    }catch(e){
+        res.status(404).render("posts/homepage", { title: "Home page", message: e });
+    }
+
 });
 
 router.get('/genre/:genre', async (req, res) => {
@@ -66,7 +75,7 @@ router.get('/genre/:genre', async (req, res) => {
     }
 });
 
-router.get('/getAll', async(req,res)=>{
+router.get('/deletegetAll', async(req,res)=>{
     try{
         let allGames =await gamesData.getAll();
         // res.json(allGames)

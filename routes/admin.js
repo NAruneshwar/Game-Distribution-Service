@@ -22,6 +22,10 @@ router.get('/homepage', async(req,res)=>{
     res.render("posts/admin-homepage",{title: "Admin Homepage"});
 });
 
+router.get('/delete_user', async(req,res)=>{
+    res.render("posts/deleteuser", { title: "Delete User" });
+})
+
 router.post('/check', async (req, res) => {
     username = req.body.username
     password = req.body.password

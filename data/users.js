@@ -1,5 +1,5 @@
 const mongoCollections = require('../config/mongoCollections.js');
-let { ObjectId } = require('mongodb');
+let  objectId  = require('mongodb').ObjectId;
 const users = mongoCollections.users;
 
 const create = async (first_name,last_name,username,age,email,admin,state,country,hashedPassword) => {
@@ -78,7 +78,8 @@ const create = async (first_name,last_name,username,age,email,admin,state,countr
         throw 'the given hashedPassword is empty string please provide a hashedPassword'
     }
   
-    
+    email = email.toLowerCase();
+
     let newGame ={
         first_name,
         last_name,
@@ -94,31 +95,18 @@ const create = async (first_name,last_name,username,age,email,admin,state,countr
         "game_ids": []
     };
     const insertInfo = await usersCollect.insertOne(newGame);
-    if (insertInfo.insertedCount === 0) throw 'Could not add Game please debug';
+    if (insertInfo.insertedCount === 0) throw 'Could not add user';
     const newId = insertInfo.insertedId;
 
     return newId
 }
 
 const remove = async(id, name) => {
-    if (!id) {
-      throw 'You must provide an id to delete user';
-    }
-    if(typeof(id)!="string" || id.length!=24){
-      throw 'You must only pass in id as string that is 24 charecters long'
-    }
-    if(id.trim()===""){
-      throw 'Id can not be empty spaces'
-    }
-    var re =  /^[0-9a-fA-F]+$/;
-    if(!re.test(id)) {
-      throw 'Given Input is not in hexadecimal please verify ID'
-    } 
+    check_id(id)
     usersCollect = await users();
     const deletionGame = await usersCollect.deleteOne({ _id: ObjectId(id) });
-      // console.log(deletionMovie);
       if (deletionGame.deletedCount === 0) {
-        throw `Could not delete Game with id of ${id}`;
+        throw `Could not delete user}`;
       }
     
     return name;
@@ -135,30 +123,33 @@ const check_usernames = async(username) =>{
   }
 
 const check_id = async(userid) =>{
-    if (!userid) {
-        throw 'You must provide an userid to delete user';
-      }
-      if(typeof(userid)!="string" || userid.length!=24){
-        throw 'You must only pass in userid as string that is 24 charecters long'
-      }
-      if(userid.trim()===""){
-        throw 'Id can not be empty spaces'
-      }
-      var re =  /^[0-9a-fA-F]+$/;
-      if(!re.test(userid)) {
-        throw 'Given Input is not in hexadecimal please verify ID'
-      } 
-    const usersCollect = await users();
-    const usernameList = await usersCollect.findOne({"_id": ObjectId(userid)});
-    if(usernameList!=null){
-        return true
+    if (!userid || typeof userid !== 'string') {
+        throw `ID is not proper`
     }
-    return false
+    userid = userid.trim()
+    if (userid == "") {
+        throw `ID should not be blank`
+    }
+    if (objectId.isValid(userid) === false) {
+        throw `ID is not valid`
+    }
   }
-  
+
+const getAllUsers = async () => {
+    const usersCollect = await users();
+    const usernameList = await usersCollect.find({}).toArray();
+    if (usernameList == null) {
+        throw 'No users exist in the DB';
+    }
+    for (i = 0; i < usernameList.length; i++) {
+        usernameList[i]._id = usernameList[i]._id.toString();
+    }
+    return usernameList
+}
+
 module.exports = {
     create,
     remove,
     check_usernames,
-    check_id
+    getAllUsers
 }
