@@ -68,6 +68,7 @@ function checksForNewUser(
 
 router.get("/", async (req, res) => {
   res.render("posts/signup", { title: "Sign Up" });
+  return;
 });
 
 router.get("/username", async (req, res) => {
@@ -106,8 +107,10 @@ router.post("/newuser", async (req, res) => {
       title: "Sign Up",
       message: "Account created, please login.",
     });
+    return;
   } catch (e) {
     res.render("posts/signup", { title: "Sign Up", message: e });
+    return;
   }
 });
 

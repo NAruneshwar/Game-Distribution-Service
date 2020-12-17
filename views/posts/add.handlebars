@@ -23,7 +23,18 @@
         <div>
         
             <label>Add Genres seperated by ","
-                <input type="text" class="add-info" id="genre" name="genre" placeholder="Enter List genre/s" required>
+                <select class="add-info" id="genre" name="genre" multiple>
+                    <option value="action">Action</option>
+                    <option value="action-adventure">Action-Adventure</option>
+                    <option value="adventure">Adventure</option>
+                    <option value="horror">Horror</option>
+                    <option value="racing">Racing</option>
+                    <option value="rpg">RPG</option>
+                    <option value="strategy">Strategy</option>
+                    <option value="sports">Sports</option>
+                    <option value="multiplayer">Multiplayer</option>
+                </select>
+                {{!-- <input type="text" class="add-info" id="genre" name="genre" placeholder="Enter List genre/s" required> --}}
             </label>
         </div>
         <div>

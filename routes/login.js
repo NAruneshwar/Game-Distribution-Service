@@ -17,7 +17,7 @@ function checkUsernamePassword(uname, pswd) {
 }
 
 router.get("/", async (req, res) => {
-  res.render("posts/login", { title: "Log In" });
+  return res.render("posts/login", { title: "Log In" });
 });
 
 router.post("/check", async (req, res) => {
@@ -34,12 +34,14 @@ router.post("/check", async (req, res) => {
         admin: users.admin,
       };
       res.redirect("/");
+      return;
     }
-    res.status(401).render("posts/login", {
+    return res.status(401).render("posts/login", {
       message: "Username or password is not correct",
     });
+    return;
   } catch (e) {
-    res.status(401).render("posts/login", { message: e });
+    return res.status(401).render("posts/login", { message: e });
   }
 });
 
@@ -60,10 +62,9 @@ router.get("/logout", async (req, res) => {
 
     req.session.destroy();
     return res.redirect("/");
-}
-else{
-  return res.redirect("/");
-}
+  } else {
+    return res.redirect("/");
+  }
 });
 
 module.exports = router;
