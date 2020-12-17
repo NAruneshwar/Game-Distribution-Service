@@ -117,7 +117,7 @@ router.get("/:game_id", async (req, res) => {
     const game = await gamesData.getOne(game_id);
     res.status(200).render("posts/game", { title: game.title, data: game });
   } catch (e) {
-    res.status(404).render("posts/genre", { title: "Browse", message: e });
+    res.status(404).render("posts/homepage", { title: "Home page", message: e });
   }
 });
 
