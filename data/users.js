@@ -136,7 +136,7 @@ const check_usernames = async(username) =>{
 
 const check_id = async(userid) =>{
     if (!userid) {
-        throw 'You must provide an userid to delete user';
+        throw 'You must provide an userid to check user';
       }
       if(typeof(userid)!="string" || userid.length!=24){
         throw 'You must only pass in userid as string that is 24 charecters long'
@@ -155,10 +155,31 @@ const check_id = async(userid) =>{
     }
     return false
   }
+
+const check_user_email = async(email_id) =>{
+    if(!email_id) {
+        throw 'You must provide an emailid to check user';
+      }
+    if(!email_id|| typeof(email_id)!='string') {
+        throw 'You must provide a email_id for the game in a string format';
+    }
+    if(email_id.trim()=== ""){
+        throw 'the given email_id is empty string please provide a email_id'
+    }
+   
+    const usersCollect = await users();
+    const usernameList = await usersCollect.findOne({"email": email_id});
+    if(usernameList!=null){
+        return true
+    }
+    return false
+  }
   
+
 module.exports = {
     create,
     remove,
     check_usernames,
+    check_user_email,
     check_id
 }
