@@ -5,25 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title}}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+        crossorigin="anonymous">
     <link rel="stylesheet" href="/public/css/site.css">
 </head>
 
 
 <body>
 
-    <nav>
+    <nav class="nav">
 
         <div class="logo">
-            <h4>GAME</h4>
+            <h1>GAME</h1>
         </div>
         
-        <ul class="navlinks">
-            <li><a href="/">Home</a></li>
-            <li><a href="">About</a></li>
-            <li><a href="/signup">Sign Up</a></li>
-            <li><a href="/login">Login</a></li>
-            <li><a href="/cart" hidden>Cart</a></li>
-            <li><a href="/profile" hidden>Settings</a></li>
+        <ul class="navlinks navbar-nav mr-auto">
+            <li class="nav-item"><a href="/">Home</a></li>
+            <li class="nav-item"><a href="/about">About us</a></li>
+            <li class="nav-item"><a href="/signup">Sign Up</a></li>
+            <li class="nav-item"><a href="/login">Login</a></li>
+            <li class="nav-item"><a href="/cart" hidden>Cart</a></li>
+            <li class="nav-item"><a href="/profile" hidden>Settings</a></li>
             
         </ul>
 
@@ -31,6 +33,17 @@
 
 
     {{{body}}}
+
+
+    <script
+      src="https://code.jquery.com/jquery-2.2.4.min.js"
+      integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+      crossorigin="anonymous"
+    ></script>
+    {{!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --}}
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+        crossorigin="anonymous"></script>
+    <script src="/public/js/script.js"></script>
 
 </body>
 
