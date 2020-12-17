@@ -18,9 +18,15 @@
       // error: function (xhr, status) {
       //   console.log("Sorry, there was a problem!");
       // },
-      // complete: function (xhr, status) {
-      //   console.log(xhr);
-      // },
+      complete: function (returnData) {
+        if (returnData !== "true") {
+          $("#checkusername").html("this username is already taken.");
+          $("#checkusername").show();
+        } else {
+          $("#checkusername").empty();
+          $("#checkusername").hide();
+        }
+      },
     });
   });
   //   $(document).on("change", ".password", function () {
@@ -60,31 +66,28 @@
   //   $("#retypepassword").onchange((e) => {
 
   $("#username").change(function () {
-    var username = $("#username").val();
+    let username = $("#username").val();
+    // alert($("#username").val());
+    // alert(username);
     $.ajax({
-      url: "/login/username",
+      url: "signup/username",
       type: "POST",
-      data: username,
+      data: $("#username").val(),
       error: function (xhr, status) {
         console.log("Sorry, there was a problem!");
+        // $("#checkusername").html("this username is already taken.");
+        // $("#checkusername").show();
       },
-      success: function (xhr, status) {
-        console.log(xhr);
+      success: function (returnData) {
+        if (returnData !== "true") {
+          $("#checkusername").html("this username is already taken.");
+          $("#checkusername").show();
+        } else {
+          $("#checkusername").empty();
+          $("#checkusername").hide();
+        }
       },
     });
-    if (password == $(this).val()) {
-      $("#checkusername").html("&#9989; Password Matched");
-      $("#checkusername").show();
-      $("#checkusername").css("color", "green");
-      // document.getElementById("signupbtn").disabled = false;
-      //   $("#signupbtn").removeAttr("disabled", "disabled");
-    } else {
-      $("#checkusername").html("&#10060; Password does not Match");
-      $("#checkusername").show();
-      $("#checkusername").css("color", "red");
-      // document.getElementById("signupbtn").disabled = true;
-      //   $("#signupbtn").prop("disabled", true);
-    }
   });
 
   $("#password").change(function () {
