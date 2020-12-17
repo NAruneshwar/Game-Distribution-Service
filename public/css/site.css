@@ -390,7 +390,7 @@ a.wb:hover {
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
-  width: 150px;
+  width: 220px;
   border-radius: 5px;
 }
 
@@ -401,12 +401,16 @@ a.wb:hover {
 
 .card-image {
   border-radius: 5px;
-  width: 150px;
-  height: 200px;
+  width: 220px;
+  height: 300px;
 }
 
 .card-container {
   padding: 15px;
+}
+
+.list_games {
+  margin-bottom: 15%;
 }
 
 .submitbtn {
