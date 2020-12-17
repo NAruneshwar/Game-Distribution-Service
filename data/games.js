@@ -130,7 +130,6 @@ const getAll = async () => {
 };
 
 const getOne = async (game_id) => {
-  console.log("here")
   const gamesCollect = await games();
   const gamesList = await gamesCollect.findOne({ _id: objectId(game_id) });;
   if (gamesList == null) throw 'No game exist in the DB with that id';
