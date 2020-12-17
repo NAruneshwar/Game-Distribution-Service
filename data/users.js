@@ -78,7 +78,8 @@ const create = async (first_name,last_name,username,age,email,admin,state,countr
         throw 'the given hashedPassword is empty string please provide a hashedPassword'
     }
   
-    
+    email = email.toLowerCase();
+
     let newGame ={
         first_name,
         last_name,
@@ -116,7 +117,6 @@ const remove = async(id, name) => {
     } 
     usersCollect = await users();
     const deletionGame = await usersCollect.deleteOne({ _id: ObjectId(id) });
-      // console.log(deletionMovie);
       if (deletionGame.deletedCount === 0) {
         throw `Could not delete Game with id of ${id}`;
       }
@@ -155,10 +155,23 @@ const check_id = async(userid) =>{
     }
     return false
   }
-  
+
+const getAllUsers = async () => {
+    const usersCollect = await users();
+    const usernameList = await usersCollect.find({}).toArray();
+    if (usernameList == null) {
+        throw 'No games exist in the DB';
+    }
+    for (i = 0; i < usernameList.length; i++) {
+        usernameList[i]._id = usernameList[i]._id.toString();
+    }
+    return usernameList
+}
+
 module.exports = {
     create,
     remove,
     check_usernames,
-    check_id
+    check_id,
+    getAllUsers
 }
