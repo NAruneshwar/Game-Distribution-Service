@@ -8,9 +8,12 @@ router.post('/delete/:user_id', async (req, res) => { //for admin only... sessio
         let user_id = req.params.user_id
         const deletedUser = await userData.remove(user_id)
         if (deletedUser == 1) {
-            res.render("posts/deleteuser", { title: "Delete User", message: "User Deleted Successfully!" });
+            res.render("posts/admin-homepage", { title: "Admin Homepage", message: "User Deleted Successfully!" });
         }
     } catch (e) {
-        res.status(401).render("posts/deleteuser", { title: "Delete User", message: e });
+        res.status(401).render("posts/deleteuser", { title: "Admin Homepage", message: e });
     }
 });
+
+
+module.exports=router;

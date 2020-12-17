@@ -4,6 +4,9 @@
     <h1>Game Deletion Portal</h1>
     {{message}}
     <p class="req">Showing all games</p>
+    {{#unless data}}
+    There are no more games!
+    {{/unless}}
     {{#each data}}
     <form action="/games/delete/{{_id}}" method="POST">
         {{name}}<button class="dbtn" type="submit">Delete</button><br>

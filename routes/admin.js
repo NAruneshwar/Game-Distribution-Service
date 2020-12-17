@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const logindata = require('../data/login')
 const gamesdata = require('../data/games')
-const reviewdata = require('../data/reviews')
+const usersdata = require('../data/users')
 
 router.get('/', async (req, res) => {
     res.render("posts/admin-homepage", { title: "Admin Homepage" });
@@ -28,7 +28,8 @@ router.get('/delete_game', async (req, res) => {
 // });
 
 router.get('/delete_user', async (req, res) => {
-    res.render("posts/deleteuser", { title: "Delete User" });
+    const users = await usersdata.getAllUsers()
+    res.render("posts/deleteuser", { title: "Delete User", data: users });
 })
 
 router.post('/check', async (req, res) => {
