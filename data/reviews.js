@@ -9,8 +9,9 @@ const reviews = mongoCollections.reviews;
 const reviewsByGameId = async(game_id)=>{
     const reviewsCollect = await reviews();
     const game = await games.getOne(game_id);
-    console.log(game)
-    
+    if(game===null){
+        throw `Game not found.`
+    }
     const reviewslist = await reviewsCollect.find({"game_id":game_id}).toArray();
     return(reviewslist)
 }
