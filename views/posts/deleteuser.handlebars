@@ -1,1 +1,15 @@
-<h2>GET ALL USERS HERE</h2>
+<a href="/admin/">Back to homepage</a>
+<div class="deletion">
+
+    <h1>User Deletion Portal</h1>
+    {{message}}
+    <p class="req">Showing all users</p>
+    {{#unless data}}
+    There are no users!
+    {{/unless}}
+    {{#each data}}
+    <form action="/users/delete/{{_id}}" method="POST">
+        {{first_name}} {{last_name}}<button class="dbtn" type="submit">Delete</button><br>
+    </form>
+    {{/each}}
+</div>

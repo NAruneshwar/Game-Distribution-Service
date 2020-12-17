@@ -26,18 +26,24 @@ router.get("/:user_id", async (req, res) => {
 router.delete("/delete/:user_id", async (req, res) => {
   //for admin only... sessions required
   //Delete a player's profile.
-  try {
-    let user_id = req.params.user_id;
-    const deletedProfile = await booksData.deleteProfileById(user_id);
-    if (deletedProfile == 1) {
-      res.render("posts/admin-homepage", {
-        title: "Admin Homepage",
-        message: "Profile Deleted",
-      });
+  if (req.session.user) {
+    if (req.session.user.admin) {
+      try {
+        let user_id = req.params.user_id;
+        const deletedProfile = await booksData.deleteProfileById(user_id);
+        if (deletedProfile == 1) {
+          res.render("posts/admin-homepage", {
+            title: "Admin Homepage",
+            message: "Profile Deleted",
+          });
+        }
+      } catch (e) {
+        console.log(e);
+        res.status(500).send({ message: e });
+      }
     }
-  } catch (e) {
-    console.log(e);
-    res.status(500).send({ message: e });
+  } else {
+    res.redirect("/")
   }
 });
 
