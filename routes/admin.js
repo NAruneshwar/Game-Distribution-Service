@@ -3,7 +3,7 @@ const router = express.Router()
 const logindata = require('../data/login')
 
 router.get('/', async (req, res) => {
-    res.render("posts/admin-login", { title: "Log In" });
+    res.render("posts/admin-homepage",{title: "Admin Homepage"});
 });
 
 router.get('/add_game', async (req, res) => {
@@ -18,9 +18,9 @@ router.get('/delete_review', async (req, res) => {
     res.render("posts/deletereview", { title: "Delete Game" });
 });
 
-router.get('/homepage', async(req,res)=>{
-    res.render("posts/admin-homepage",{title: "Admin Homepage"});
-});
+// router.get('/homepage', async(req,res)=>{
+//     res.render("posts/admin-homepage",{title: "Admin Homepage"});
+// });
 
 router.get('/delete_user', async(req,res)=>{
     res.render("posts/deleteuser", { title: "Delete User" });

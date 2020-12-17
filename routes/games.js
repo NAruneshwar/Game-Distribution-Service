@@ -63,6 +63,10 @@ function checkForGame(
   }
 }
 
+router.get('/genre', async (req, res) => {
+  res.render("posts/genre", { title: "Games By Genre" })
+})
+
 router.get("/", async (req, res) => {
   //this is for home page to show all games
   try {
@@ -84,7 +88,7 @@ router.get("/genre/:genre", async (req, res) => {
   //will show games of that genre
   const genre = req.params.genre;
   try {
-    const games = await gamesData.gamesByGenre(genre);
+    const games = await gamesData.getByGenre(genre);
     res.status(200).render("posts/gamelist", { title: "Games", data: games });
   } catch (e) {
     res.status(404).render("posts/genre", { title: "Browse", message: e });
@@ -99,12 +103,10 @@ router.get("/deletegetAll", async (req, res) => {
       .status(200)
       .render("posts/delete", { title: "Delete Game", data: allGames });
   } catch (e) {
-    res
-      .status(404)
-      .render("posts/delete", {
-        title: "Delete Game",
-        message: "Something went wrong!",
-      });
+    res.status(404).render("posts/delete", {
+      title: "Delete Game",
+      message: "Something went wrong!",
+    });
   }
 });
 
@@ -112,7 +114,7 @@ router.get("/:game_id", async (req, res) => {
   //Will show an individual game with that ID
   const game_id = req.params.game_id;
   try {
-    const game = await gamesData.gameByID(game_id);
+    const game = await gamesData.getOne(game_id);
     res.status(200).render("posts/game", { title: game.title, data: game });
   } catch (e) {
     res.status(404).render("posts/genre", { title: "Browse", message: e });
@@ -124,7 +126,7 @@ router.post("/add", async (req, res) => {
   //Add games using this route
 
   let name = req.body.name;
-  let image = req.body.image;
+  let image = req.body.image; //array
   let genre = req.body.genre;
   let size = req.body.size;
   let compatibility = req.body.compatibility;

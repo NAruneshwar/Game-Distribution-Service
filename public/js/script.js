@@ -59,20 +59,59 @@
   //   $(".retypepassword").on("change", function myFunction() {
   //   $("#retypepassword").onchange((e) => {
 
+  $("#username").change(function () {
+    var username = $("#username").val();
+    $.ajax({
+      url: "/login/username",
+      type: "POST",
+      data: username,
+      error: function (xhr, status) {
+        console.log("Sorry, there was a problem!");
+      },
+      success: function (xhr, status) {
+        console.log(xhr);
+      },
+    });
+    if (password == $(this).val()) {
+      $("#checkusername").html("&#9989; Password Matched");
+      $("#checkusername").show();
+      $("#checkusername").css("color", "green");
+      // document.getElementById("signupbtn").disabled = false;
+      //   $("#signupbtn").removeAttr("disabled", "disabled");
+    } else {
+      $("#checkusername").html("&#10060; Password does not Match");
+      $("#checkusername").show();
+      $("#checkusername").css("color", "red");
+      // document.getElementById("signupbtn").disabled = true;
+      //   $("#signupbtn").prop("disabled", true);
+    }
+  });
+
   $("#password").change(function () {
     // var password = $("#password").val();
-    alert($("#password").length);
-    if ($(this).length < 8) {
+    if ($(this).val().length < 8) {
       $("#passwordchar").html("Password needs to be 8 characters or more");
       $("#passwordchar").show();
       $("#passwordchar").css("color", "red");
-      // document.getElementById("login_btn").disabled = false;
-      // $("#login_btn").removeAttr("disabled", "disabled");
+      $("#matchpassword").hide();
+      //   document.getElementById("#signupbtn").disabled = true;
     } else {
-      alert("hello");
       $("#passwordchar").empty();
       $("#passwordchar").hide();
-      // $("#passwordchar").css("color", "red");
+      var retypepassword = $("#retypepassword").val();
+      if (retypepassword == $(this).val()) {
+        $("#matchpassword").html("&#9989; Password Matched");
+        $("#matchpassword").show();
+        $("#matchpassword").css("color", "green");
+        // document.getElementById("#signupbtn").disabled = false;
+        // $("#signupbtn").removeAttr("disabled", "disabled");
+      } else {
+        $("#matchpassword").html("&#10060; Password does not Match");
+        $("#matchpassword").show();
+        $("#matchpassword").css("color", "red");
+        // document.getElementById("signupbtn").disabled = true;
+        // $("#signupbtn").prop("disabled", true);
+      }
     }
   });
 
@@ -82,14 +121,14 @@
       $("#matchpassword").html("&#9989; Password Matched");
       $("#matchpassword").show();
       $("#matchpassword").css("color", "green");
-      // document.getElementById("login_btn").disabled = false;
-      $("#login_btn").removeAttr("disabled", "disabled");
+      // document.getElementById("signupbtn").disabled = false;
+      //   $("#signupbtn").removeAttr("disabled", "disabled");
     } else {
       $("#matchpassword").html("&#10060; Password does not Match");
       $("#matchpassword").show();
       $("#matchpassword").css("color", "red");
-      // document.getElementById("login_btn").disabled = true;
-      $("#login_btn").prop("disabled", true);
+      // document.getElementById("signupbtn").disabled = true;
+      //   $("#signupbtn").prop("disabled", true);
     }
   });
 })(jQuery);

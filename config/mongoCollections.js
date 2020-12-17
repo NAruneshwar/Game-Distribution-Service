@@ -15,8 +15,6 @@ module.exports = {
     users: getCollectionFn('Users'),
     games: getCollectionFn('Games'),
     reviews: getCollectionFn('Reviews'),
-    comments: getCollectionFn('Comments'),
-    admin: getCollectionFn('Admin')
-
+    comments: getCollectionFn('Comments')
     //define collections here
 };
