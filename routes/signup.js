@@ -72,7 +72,6 @@ router.get("/", async (req, res) => {
 
 router.get("/username", async (req, res) => {
   const usernme = await userData.check_usernames(req.body.username);
-  console.log(usernme);
   return usernme;
   //   res.render("posts/signup", { title: "Sign Up" });
 });
@@ -102,7 +101,7 @@ router.post("/newuser", async (req, res) => {
       data.country,
       hashedPassword
     );
-    res.render("posts/signup", {
+    res.render("posts/login", {
       title: "Sign Up",
       message: "Account created, please login.",
     });

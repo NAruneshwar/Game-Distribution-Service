@@ -10,7 +10,8 @@ router.get('/:game_id', async (req, res) => {
         const game = await gamesData.getOne(game_id);
         let price = Number(game.price)
         let total_price = (price + price * 0.08).toFixed(2)
-        res.status(200).render("posts/payment", { title: "Payment", game: game, price: price, total_price: total_price });
+        // let user_id = JSON.stringify(req.session.user.uid)
+        res.status(200).render("posts/payment", { title: "Payment", game: game, price: price, total_price: total_price, user_id: req.session.user.uid});
     } catch (e) {
         res.status(404).render("posts/payment", { title: "Payment", message: e });
     }
@@ -32,7 +33,11 @@ router.post('/success', async (req, res) => {
     updateObject.game_ids = Array.from(arraySet)
     try {
         const user = await paymentData.addToGamersProfile(userid, updateObject)
+        if(user==1){
         res.status(200).render("posts/genre", { title: "Games", message: "Payment successful! Browse more interesting games here!" });
+        }else{
+            res.status(404).render("posts/genre", { title: "Games", message: "Something went wrong!" });    
+        }
     } catch (e) {
         res.status(404).render("posts/genre", { title: "Games", message: e });
     }

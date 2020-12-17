@@ -18,11 +18,20 @@ router.post('/add/:game_id',async(req,res)=>{
     let game_id=req.params.game_id
     data=req.body
     try{
-        user_id=data.user_id
-        review = data.review
-        rating  = data.rating
+        let user_id=data.user_id;
+        let review = data.comment;
+        let rating  = data.rating;
+        let image = "some string for image";
+        console.log(user_id)
+        console.log(review)
+        console.log(rating)
+        console.log(game_id)
+        // NOT WORKING
+        const reviewAdded = reviewsData.addReviewForGame(game_id,user_id,comment,rating, image);
+        console.log(reviewAdded)
+        
     }catch(e){
-
+        res.status(401).redirect("/");
     }
 });
 
