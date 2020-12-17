@@ -1,9 +1,22 @@
 {{!-- LOgin page for admin --}}
+<div class="loginform">
 <h1> Admin login </h1>
-{{message}}
+    {{message}}
 
-<form action="admin/check" method="POST">
-<p>Incomplete</p>
-<input type="text" placeholder="Username">
-<input type="password" placeholder="Password">
-</form>
+    <form action="admin/check" method="POST">
+        <p>Incomplete</p>
+        <div>
+            <label>
+                <input type="text" name="username" class="login-info" placeholder="Username" required>
+            </label>
+        </div>
+
+        <div>
+            <label>
+                <input type="password" name="password" class="login-info" placeholder="Password" required>
+            </label>
+        </div>
+
+        <button class="loginbtn">Enter</button>
+    </form>
+</div>
