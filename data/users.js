@@ -95,7 +95,7 @@ const create = async (first_name,last_name,username,age,email,admin,state,countr
         "game_ids": []
     };
     const insertInfo = await usersCollect.insertOne(newGame);
-    if (insertInfo.insertedCount === 0) throw 'Could not add Game please debug';
+    if (insertInfo.insertedCount === 0) throw 'Could not add user';
     const newId = insertInfo.insertedId;
 
     return newId
@@ -106,7 +106,7 @@ const remove = async(id, name) => {
     usersCollect = await users();
     const deletionGame = await usersCollect.deleteOne({ _id: ObjectId(id) });
       if (deletionGame.deletedCount === 0) {
-        throw `Could not delete Game.}`;
+        throw `Could not delete user}`;
       }
     
     return name;
@@ -139,7 +139,7 @@ const getAllUsers = async () => {
     const usersCollect = await users();
     const usernameList = await usersCollect.find({}).toArray();
     if (usernameList == null) {
-        throw 'No games exist in the DB';
+        throw 'No users exist in the DB';
     }
     for (i = 0; i < usernameList.length; i++) {
         usernameList[i]._id = usernameList[i]._id.toString();
