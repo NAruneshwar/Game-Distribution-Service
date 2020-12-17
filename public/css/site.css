@@ -478,3 +478,18 @@ span.price {
   margin: 5% auto 0;
   text-align: left;
 }
+
+.genre-item {
+    border-radius: 10px;
+    padding: 10px;
+    margin: 40px 0;
+    width: 100%;
+    color: #11498a;
+    outline: none;
+    font-size: 25px;
+}
+
+.gen ul li a:hover {
+    color: #4095c6;
+}
+
