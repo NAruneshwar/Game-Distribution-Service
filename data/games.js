@@ -6,7 +6,7 @@ const check_id = async (gameid) => {
   if (!gameid || typeof gameid !== "string") {
     throw `ID is not proper`;
   }
-  gameid = userid.trim();
+  gameid = gameid.trim();
   if (gameid == "") {
     throw `ID should not be blank`;
   }
@@ -135,14 +135,14 @@ const getOne = async (game_id) => {
   return gamesList;
 };
 
-const remove = async (id, name) => {
+const remove = async (id) => {
   check_id(id);
   gamesCollect = await games();
   const deletionGame = await gamesCollect.deleteOne({ _id: objectId(id) });
   if (deletionGame.deletedCount === 0) {
     throw `Could not delete game.`;
   }
-  return name;
+  return 1;
 };
 
 const getByGenre = async (genre) => {

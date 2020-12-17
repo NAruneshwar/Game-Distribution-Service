@@ -17,7 +17,7 @@ const main = async () =>{
         // usersupdate = await games.update(newgame2,"COD2",["img32525235","img215135135"],["action","fps"],"11GB",["Windows 10","Android 10+"],["English","Hindi","cantonese"],"27+","https://www.callofduty.com/home","8.6",[""],10,'15.55');
         // console.log(usersupdate)
         // console.log(await users.login("Arun_91","aelighaljg;gkagladnglkadnn"))
-        // newReview = await reviews.addReviewForGame("5fd91df1a5932d26d9c1f97b","5fd7aa16f71aa18540f47841","all right all right all right!","3","image.img!");
+        // newReview = await reviews.addReviewForGame("s","s","all right all right all right!","3","image.img!");
         // console.log(newReview)
         // console.log(await reviews.reviewsByGameId("5fd91df1a5932d26d9c1f97b"));
         // // console.log(await reviews.deleteGameById("5fd91df1a5932d26d9c1f97b"));

@@ -190,7 +190,7 @@ router.post("/delete/:game_id", async (req, res) => {
   //Delete game with the ID
   try {
     let game_id = req.params.game_id;
-    const deletedGame = await gamesData.deleteGameById(game_id);
+    const deletedGame = await gamesData.remove(game_id);
     if (deletedGame == 1) {
       res.render("posts/admin-homepage", {
         title: "Delete Game",
