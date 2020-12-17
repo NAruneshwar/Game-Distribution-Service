@@ -23,7 +23,7 @@
         <div>
         
             <label>Add Genres seperated by ","
-                <select class="add-info" id="genre" name="genre" multiple>
+                <select class="add-info" id="genre" name="genre" multiple required>
                     <option value="action">Action</option>
                     <option value="action-adventure">Action-Adventure</option>
                     <option value="adventure">Adventure</option>
@@ -45,13 +45,30 @@
         <div>
 
             <label> List of platforms supported by the game seperated by ","
-                <input type="text" class="add-info" id="compatibility" name="compatibility" placeholder="Enter list of devices" required>
+                <select class="add-info" id="compatibility" name="compatibility" multiple required>
+                    <option value="Windowsos">Windows OS</option>
+                    <option value="Macos">Mac OS</option>
+                    <option value="Xbox">Xbox</option>
+                    <option value="PS">PS</option>
+                    <option value="Android">Android</option>
+                    <option value="Ios">ios</option>
+                </select>
+                {{!-- <input type="text" class="add-info" id="compatibility" name="compatibility" placeholder="Enter list of devices" required> --}}
             </label>
         </div>
         <div>
-
             <label>List of languages supported by the game seperated by ","
-                <input type="text" class="add-info" id="languages" name="languages" placeholder="Enter languages" required>
+                <select class="add-info" id="languages" name="languages" multiple requireds>
+                    <option value="Arabic">Arabic</option>
+                    <option value="English">English</option>
+                    <option value="French">French</option>
+                    <option value="German">German</option>
+                    <option value="Hindi">Hindi</option>
+                    <option value="Japanese">Japanese</option>
+                    <option value="Korean">Korean</option>
+                    <option value="Spanish">Spanish</option>
+                </select>
+                {{!-- <input type="text" class="add-info" id="languages" name="languages" placeholder="Enter languages" required> --}}
             </label>
         </div>
         <div>
