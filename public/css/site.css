@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-nav {
+/* nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -41,8 +41,38 @@ nav {
 
 .navlinks li {
   list-style: none;
+} */
+
+.navi {
+    width: 100%;
+    background-color: rgba(17, 73, 138);
 }
 
+.navi ul {
+    text-align: center;
+}
+
+.navi ul li {
+    list-style: none;
+    display: inline-block;
+}
+
+.navi ul li a {
+    display: block;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: white;
+    font-size: 20px;
+    letter-spacing: 2px;
+    font-weight: 600;
+    padding: 25px;
+    transition: all ease 0.3s;
+}
+
+.navi ul li a:hover {
+    background-color: #4095c6;
+}
+ 
 .welcome {
   color: #11498a;
   text-align: center;
