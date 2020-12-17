@@ -72,11 +72,11 @@ const addReviewForGame = async (game_id, userId, review, rating, media) => {
     }
 
     let newReview = {
-        game_id,
-        userId,
-        review,
-        rating,
-        media
+        game_id: game_id,
+        userId: userId,
+        review: review,
+        rating: rating,
+        media: media
     }
     const reviewsCollect = await reviews();
     const reviewsAdd = await reviewsCollect.insertOne(newReview);

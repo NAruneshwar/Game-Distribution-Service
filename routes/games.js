@@ -147,7 +147,10 @@ router.get("/:game_id", async (req, res) => {
       reviewsuser.push({ username: usersname.username, review: reviews[i].review, rating: reviews[i].rating })
     }
     let average_rating = ratingsum / total_ratings
-    res.status(200).render("posts/game", { title: game.name, data: game, reviews: reviewsuser, average_rating: average_rating });
+    if(req.session.user.uid){
+      user_session=req.session.user.uid
+    }
+    res.status(200).render("posts/game", { title: game.name, data: game, reviews: reviewsuser, average_rating: average_rating, user_session: user_session });
   } catch (e) {
     res.status(404).render("posts/game", { title: "Home page", message: e });
   }
