@@ -1,6 +1,6 @@
 // import all required files
 const mongoCollections = require('../config/mongoCollections.js');
-let objectId  = require('mongodb').objectId;
+let objectId  = require('mongodb').ObjectId;
 const games = require('./games')
 const users = require('./users')
 const reviews = mongoCollections.reviews;
@@ -9,7 +9,7 @@ const check_id = async (gameid) => {
     if (!gameid || typeof gameid !== 'string') {
       throw `ID is not proper`
     }
-    gameid = userid.trim()
+    gameid = gameid.trim()
     if (gameid == "") {
       throw `ID should not be blank`
     }
