@@ -147,7 +147,7 @@ router.post("/add", async (req, res) => {
   let age_rating = req.body.age_rating;
   let website = req.body.website;
   let price = req.body.price;
-  console.log(image)
+//   console.log(image)
 //   let rating = req.body.rating;
 
   checkForGame(
