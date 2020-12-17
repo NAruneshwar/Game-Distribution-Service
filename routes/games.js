@@ -81,10 +81,39 @@ router.get("/", async (req, res) => {
     if (games == null) {
       throw `No games found`;
     }
-    res
-      .status(200)
-      .render("posts/homepage", { title: "Home page", data: games });
-    return;
+    if (req.session.user) {
+      if (req.session.user.admin) {
+        res.render("posts/homepage", {
+          title: "Home",
+          data: games,
+          userLoggedIn: true,
+          userAdmin: true,
+        });
+        return;
+      } else {
+        res.render("posts/homepage", {
+          title: "Home",
+          data: games,
+          userLoggedIn: true,
+          userAdmin: false,
+        });
+        return;
+      }
+    } else {
+      // console.log("hello2");
+      userLoggedIn = false;
+      res.status(200).render("posts/homepage", {
+        title: "Home",
+        data: games,
+        userLoggedIn: false,
+        userAdmin: false,
+      });
+      return;
+    }
+    // res
+    //   .status(200)
+    //   .render("posts/homepage", { title: "Home page", data: games });
+    // return;
   } catch (e) {
     res
       .status(404)

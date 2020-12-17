@@ -11,11 +11,37 @@ router.get("/:user_id", async (req, res) => {
     for (let i of user.game_ids) {
       games.push(await gameData.getOne(i));
     }
-    res.render("posts/profile", {
-      title: "Your profile",
-      data: user,
-      games: games,
-    });
+
+    if (req.session.user) {
+      if (req.session.user.admin) {
+        res.render("posts/profile", {
+          title: "Your profile",
+          data: user,
+          games: games,
+          userLoggedIn: true,
+          userAdmin: true,
+        });
+        return;
+      } else {
+        res.render("posts/profile", {
+          title: "Your profile",
+          data: user,
+          games: games,
+          userLoggedIn: true,
+          userAdmin: false,
+        });
+        return;
+      }
+    } else {
+      res.redirect("/");
+      return;
+    }
+
+    // res.render("posts/profile", {
+    //   title: "Your profile",
+    //   data: user,
+    //   games: games,
+    // });
   } catch (e) {
     res
       .status(401)
@@ -23,13 +49,13 @@ router.get("/:user_id", async (req, res) => {
   }
 });
 
-router.get('/', async(req,res)=>{
+router.get("/", async (req, res) => {
   if (req.session.user) {
-    if(req.session.user.uid){
-      res.redirect('/profile/'+req.session.user.uid)
+    if (req.session.user.uid) {
+      res.redirect("/profile/" + req.session.user.uid);
     }
-  }else{
-    res.redirect('/')
+  } else {
+    res.redirect("/");
   }
 });
 
@@ -53,7 +79,7 @@ router.delete("/delete/:user_id", async (req, res) => {
       }
     }
   } else {
-    res.redirect("/")
+    res.redirect("/");
   }
 });
 

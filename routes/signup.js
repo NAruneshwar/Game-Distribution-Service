@@ -3,8 +3,6 @@ const router = express.Router();
 const userData = require("../data/users");
 const bcrypt = require("bcryptjs");
 
-
-
 function checksForNewUser(
   first_name,
   last_name,

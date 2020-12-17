@@ -17,7 +17,33 @@ function checkUsernamePassword(uname, pswd) {
 }
 
 router.get("/", async (req, res) => {
-  return res.render("posts/login", { title: "Log In" });
+  if (req.session.user) {
+    userLoggedIn = true;
+    if (req.session.user.admin) {
+      res.render("posts/admin-homepage", {
+        title: "Admin Homepage",
+        userLoggedIn: userLoggedIn,
+        userAdmin: req.session.user.admin,
+      });
+      return;
+    } else {
+      res.render("posts/homepage", {
+        title: "Home",
+        userLoggedIn: userLoggedIn,
+        userAdmin: req.session.user.admin,
+      });
+      return;
+    }
+  } else {
+    userLoggedIn = false;
+    res.render("posts/login", {
+      title: "Log In",
+      userLoggedIn: false,
+      userAdmin: false,
+    });
+    return;
+  }
+  // return res.render("posts/login", { title: "Log In" });
 });
 
 router.post("/check", async (req, res) => {
@@ -27,6 +53,7 @@ router.post("/check", async (req, res) => {
   // console.log(username);
   try {
     const users = await logindata.check(username, password);
+    // console.log(users);
     if (users != null) {
       // console.log(users)
       req.session.user = {
@@ -34,13 +61,34 @@ router.post("/check", async (req, res) => {
         uid: users._id,
         admin: users.admin,
       };
-      res.redirect("/");
+      if (req.session.user) {
+        if (req.session.user.admin) {
+          // console.log("hello1");
+          res.render("posts/admin-homepage", {
+            title: "Admin Homepage",
+            userLoggedIn: true,
+            userAdmin: true,
+          });
+          return;
+        } else {
+          // console.log("hello2");
+          res.redirect("/games");
+          // res.render("posts/homepage", {
+          //   title: "Homepage",
+          //   userLoggedIn: true,
+          //   userAdmin: false,
+          // });
+          return;
+        }
+      }
+      // res.redirect("/");
+      // return;
+    } else {
+      res.status(401).render("posts/login", {
+        message: "Username or password is not correct",
+      });
       return;
     }
-    res.status(401).render("posts/login", {
-      message: "Username or password is not correct",
-    });
-    return;
   } catch (e) {
     return res.status(401).render("posts/login", { message: e });
   }

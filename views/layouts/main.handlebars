@@ -19,11 +19,17 @@
             <li class="nav-item"><a href="/">Home</a></li>
             {{!-- <li class="nav-item"><a href="/about">About us</a></li> --}}
             <li class="nav-item"><a href="/about">About us</a></li>
+            {{!-- <li class="nav-item"><a href="/cart" hidden>Cart</a></li> --}}
+            {{#if userAdmin}}
+            <li class="nav-item"><a href="/admin">Settings</a></li>
+            {{/if}}
+            {{#if userLoggedIn}}
+            <li class="nav-item"><a href="/profile">Profile</a></li>
+            <li class="nav-item"><a href="/">Logout</a></li>
+            {{else}}
             <li class="nav-item"><a href="/signup">Sign Up</a></li>
             <li class="nav-item"><a href="/login">Login</a></li>
-            <li class="nav-item"><a href="/">Logout</a></li>
-            {{!-- <li class="nav-item"><a href="/cart" hidden>Cart</a></li> --}}
-            <li class="nav-item"><a href="/profile" hidden>Profile</a></li>
+            {{/if}}
         </ul>
 
     </nav>
