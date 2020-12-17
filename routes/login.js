@@ -34,10 +34,12 @@ router.post("/check", async (req, res) => {
         admin: users.admin,
       };
       res.redirect("/");
+      return;
     }
     res.status(401).render("posts/login", {
       message: "Username or password is not correct",
     });
+    return;
   } catch (e) {
     res.status(401).render("posts/login", { message: e });
   }
