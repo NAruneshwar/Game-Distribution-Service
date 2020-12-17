@@ -50,13 +50,6 @@ const create = async (first_name, last_name, username, age, email, admin, state,
         throw 'the given email is empty string please provide the email of the user';
     }
 
-    if (!admin || typeof (admin) != 'string') {
-        throw 'You must provide a admin setting for the user in string format';
-    }
-    if (admin.trim() === "") {
-        throw 'the given admin is empty string please provide the admin setting of the user';
-    }
-
     if (!state || typeof (state) != 'string') {
         throw 'You must provide the state for the game in string format';
     }
