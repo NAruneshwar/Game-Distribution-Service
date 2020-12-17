@@ -4,19 +4,20 @@
     <span class="login_message">{{message}}</span>
     <form id="login" action="/login/check" method="POST">
 
-    <div>
-        <label>
-            <input type="text" id="username" name="username" class="login-info" placeholder="Username" required>
-        </label>
-    </div>
+        <div>
+            <label>
+                <input type="text" id="username" name="username" class="login-info" placeholder="Username" required>
+            </label>
+        </div>
 
-    <div>
-        <label>
-            <input type="password" id="password" name="password" class="login-info" placeholder="Password" required>
-        </label>
-    </div>
+        <div>
+            <label>
+                <input type="password" id="password" name="password" class="login-info" placeholder="Password" required>
+            </label>
+        </div>
 
-    <button class="loginbtn">Enter</button>
+        <input type="submit" value="Login" class="loginbtn" />
+        {{!-- <button class="loginbtn">Login</button> --}}
 
     </form>
 
