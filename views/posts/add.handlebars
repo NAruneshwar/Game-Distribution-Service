@@ -1,4 +1,5 @@
 <div class="addition">
+    <a href="/admin/"> >> Back</a>
 
 <h1>Game Addition Portal</h1>
 
@@ -7,46 +8,58 @@
 <form method ="POST" action="/games/add" >
 
     <div>
-        <label>
-           <input type="text" name ="name"class="add-info" placeholder="Game Title">
+        <label>Game Title
+           <input type="text" name ="name" id="name" class="add-info" placeholder="Game Title">
         </label>
     </div>
 
 
     <div>
         <label>
-            <p class="add-info"> Images: <span><input type="file" name="image" placeholder="Images" accept="image/*"></span></p>
+            <p class="add-info"> Images: <span><input type="file" id="image" name="image" placeholder="Images" accept="image/*" required></span></p>
         </label>
     </div>
 
     <div>
         
-        <label>
-            <input type="text" class="add-info" name="genre" placeholder="List genre/s">
+        <label>Select Genres
+            <input type="text" class="add-info" id="genre" name="genre" placeholder="Enter List genre/s">
         </label>
+    </div>
+    <div>
 
-        <label>
-            <input type="text" class="add-info" name="size" placeholder="Size of the game in MB/GB">
+        <label>Size of the game in GB
+            <input type="text" class="add-info" id="size" name="size" placeholder="Enters size">
         </label>
+    </div>
+    <div>
 
-        <label>
-            <input type="text" class="add-info" name="compatibility" placeholder="List of devices supported by the game">
+        <label>List of platforms supported by the game
+            <input type="text" class="add-info" id="compatibility" name="compatibility" placeholder="Enter list of devices">
         </label>
+    </div>
+    <div>
 
-        <label>
-            <input type="text" class="add-info" name="languages" placeholder="List of languages supported by the game">
+        <label>List of languages supported by the game
+            <input type="text" class="add-info" id="languages" name="languages" placeholder="Enter languages">
         </label>
+    </div>
+    <div>
 
-        <label>
-            <input type="text" class="add-info" name="age_rating" placeholder="Recommended age group">
+        <label>Recommended age group
+            <input type="text" class="add-info" id="age_rating" name="age_rating" placeholder="Enter recommended age">
         </label>
+    </div>
+    <div>
 
-        <label>
-            <input type="text" class="add-info" name="website" placeholder="Website URL">
+        <label>Website
+            <input type="text" class="add-info" id="website" name="website" placeholder="Enter Website">
         </label>
+    </div>
+    <div>
 
-        <label>
-            <input type="text" class="add-info" name="price" placeholder="price">
+        <label>Price
+            <input type="text" class="add-info" id="price" name="price" placeholder="Enter price">
         </label>
 
     </div>
