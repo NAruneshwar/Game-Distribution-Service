@@ -27,12 +27,14 @@ router.get("/", async (req, res) => {
       });
       return;
     } else {
-      res.render("posts/homepage", {
-        title: "Home",
-        userLoggedIn: userLoggedIn,
-        userAdmin: req.session.user.admin,
-      });
+      res.redirect("/");
       return;
+      // res.render("posts/homepage", {
+      //   title: "Home",
+      //   userLoggedIn: userLoggedIn,
+      //   userAdmin: req.session.user.admin,
+      // });
+      // return;
     }
   } else {
     userLoggedIn = false;
@@ -104,13 +106,14 @@ router.get("/check_username", async (req, res) => {
 
 router.get("/logout", async (req, res) => {
   if (req.session.user) {
-    const newDelCookie = new Date();
-    newDelCookie.setHours(newDelCookie.getHours() - 1);
-    res.cookie("lastAccessed", "", { expires: newDelCookie });
-    res.clearCookie("lastAccessed");
+    // const newDelCookie = new Date();
+    // newDelCookie.setHours(newDelCookie.getHours() - 1);
+    // res.cookie("lastAccessed", "", { expires: newDelCookie });
+    // res.clearCookie("lastAccessed");
 
     req.session.destroy();
-    return res.redirect("/");
+    res.redirect("/");
+    return;
   } else {
     return res.redirect("/");
   }
