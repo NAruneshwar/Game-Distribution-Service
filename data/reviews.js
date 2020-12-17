@@ -1,78 +1,81 @@
 // import all required files
 const mongoCollections = require('../config/mongoCollections.js');
-let objectId  = require('mongodb').ObjectId;
+let objectId = require('mongodb').ObjectId;
 const games = require('./games')
 const users = require('./users')
 const reviews = mongoCollections.reviews;
 
 const check_id = async (gameid) => {
     if (!gameid || typeof gameid !== 'string') {
-      throw `ID is not proper`
+        throw `ID is not proper`
     }
     gameid = gameid.trim()
     if (gameid == "") {
-      throw `ID should not be blank`
+        throw `ID should not be blank`
     }
     if (objectId.isValid(gameid) === false) {
-      throw `ID is not valid`
+        throw `ID is not valid`
     }
-  }
+}
 
-const reviewsByGameId = async(game_id)=>{
-    check_id(game_id)
+const reviewsByGameId = async (game_id) => {
+    // check_id(game_id)
     const reviewsCollect = await reviews();
     const game = await games.getOne(game_id);
-    if(game===null){
+    if (game === null) {
         throw `Game not found.`
     }
-    const reviewslist = await reviewsCollect.find({"game_id":game_id}).toArray();
-    return(reviewslist)
+    const reviewslist = await reviewsCollect.find({ "game_id": objectId(game_id) }).toArray();
+    if (reviewslist == null) {
+        throw `No Reviews Yet`
+    }
+    return reviewslist
 }
 
-const deleteGameById= async(review_id)=>{
+const deleteGameById = async (review_id) => {
     check_id(review_id)
     const reviewsCollect = await reviews();
-    const reviewsDelete = await reviewsCollect.deleteALL({review_id});
-     if (deletionGame.deletedCount === 0) {
+    const reviewsDelete = await reviewsCollect.deleteALL({ review_id });
+    if (deletionGame.deletedCount === 0) {
         throw `Could not delete review`;
-      }
-    return(reviewsDelete)
+    }
+    return (reviewsDelete)
 }
 
-const addReviewForGame= async(game_id, userId, review, rating, media)=>{
+const addReviewForGame = async (game_id, userId, review, rating, media) => {
     check_id(game_id)
     check_id(userId)
 
-    if(!review|| typeof(review)!='string') {
+    if (!review || typeof (review) != 'string') {
         throw 'You must provide a review in string format';
     }
-    if(review.trim()=== ""){
+    if (review.trim() === "") {
         throw 'the given review is empty string please provide the review of the user';
     }
-    if(!rating|| typeof(rating)!='string') {
+    if (!rating || typeof (rating) != 'string') {
         throw 'You must provide a review in string format';
     }
-    if(rating.trim()=== ""){
+    if (rating.trim() === "") {
         throw 'the given rating is empty string please provide the rating of the user';
     }
-    try{
+    try {
         age = Number(rating)
     }
-    catch(e){
+    catch (e) {
         throw 'Error provided age is not a number.'
     }
-    if(!media|| typeof(media)!='string') {
+    if (!media || typeof (media) != 'string') {
         throw 'You must provide a media';
     }
-    if(rating.trim()=== ""){
+    if (rating.trim() === "") {
         throw 'The given media is empty string';
     }
 
-    let newReview ={
-        game_id, 
-        userId, 
-        review, 
-        rating, 
+    let newReview = {
+        game_id,
+        userId,
+        review,
+        rating,
         media
     }
     const reviewsCollect = await reviews();
@@ -83,7 +86,7 @@ const addReviewForGame= async(game_id, userId, review, rating, media)=>{
     return newId.toString();
 }
 
-module.exports={
+module.exports = {
     reviewsByGameId,
     deleteGameById,
     addReviewForGame
