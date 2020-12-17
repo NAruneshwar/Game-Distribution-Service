@@ -435,3 +435,7 @@ span.price {
   padding: 5px;
   width: 200px;
 }
+
+.login_message {
+  color: red;
+}
