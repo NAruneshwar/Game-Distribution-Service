@@ -1,12 +1,25 @@
 // import all required files
 const mongoCollections = require('../config/mongoCollections.js');
-let { ObjectId } = require('mongodb');
+let objectId  = require('mongodb').objectId;
 const games = require('./games')
 const users = require('./users')
 const reviews = mongoCollections.reviews;
 
+const check_id = async (gameid) => {
+    if (!gameid || typeof gameid !== 'string') {
+      throw `ID is not proper`
+    }
+    gameid = userid.trim()
+    if (gameid == "") {
+      throw `ID should not be blank`
+    }
+    if (objectId.isValid(gameid) === false) {
+      throw `ID is not valid`
+    }
+  }
 
 const reviewsByGameId = async(game_id)=>{
+    check_id(game_id)
     const reviewsCollect = await reviews();
     const game = await games.getOne(game_id);
     if(game===null){
@@ -17,17 +30,18 @@ const reviewsByGameId = async(game_id)=>{
 }
 
 const deleteGameById= async(review_id)=>{
+    check_id(review_id)
     const reviewsCollect = await reviews();
     const reviewsDelete = await reviewsCollect.deleteALL({review_id});
      if (deletionGame.deletedCount === 0) {
-        throw `Could not delete Game with id of ${id}`;
+        throw `Could not delete review`;
       }
     return(reviewsDelete)
 }
 
 const addReviewForGame= async(game_id, userId, review, rating, media)=>{
-    const game = await games.getOne(game_id);
-    // const user = await users.check_usernames(userId)
+    check_id(game_id)
+    check_id(userId)
 
     if(!review|| typeof(review)!='string') {
         throw 'You must provide a review in string format';
@@ -45,13 +59,13 @@ const addReviewForGame= async(game_id, userId, review, rating, media)=>{
         age = Number(rating)
     }
     catch(e){
-        throw 'Error provided rating is not a number.'
+        throw 'Error provided age is not a number.'
     }
     if(!media|| typeof(media)!='string') {
         throw 'You must provide a media';
     }
     if(rating.trim()=== ""){
-        throw 'the given media is empty string';
+        throw 'The given media is empty string';
     }
 
     let newReview ={
@@ -63,7 +77,7 @@ const addReviewForGame= async(game_id, userId, review, rating, media)=>{
     }
     const reviewsCollect = await reviews();
     const reviewsAdd = await reviewsCollect.insertOne(newReview);
-    if (reviewsAdd.insertedCount === 0) throw 'Could not add Game please debug';
+    if (reviewsAdd.insertedCount === 0) throw 'Could not add review';
     const newId = reviewsAdd.insertedId;
 
     return newId.toString();
