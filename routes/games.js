@@ -13,18 +13,18 @@ function checkForGame(
   languages,
   age_rating,
   website,
-  rating
+  
 ) {
   name = name.trim();
   if (!name || name == "" || typeof name != "string") {
     throw `Invalid name`;
   }
 
-  if (!image || image == "" || typeof image != "array") {
-    throw `Invalid Image`;
-  }
+//   if (!image || image == "" || typeof image != "array") {
+//     throw `Invalid Image`;
+//   }
 
-  if (!genre || genre == "" || typeof genre != "array") {
+  if (!genre || genre == "" || !Array.isArray(genre)) {
     throw `Invalid genre`;
   }
 
@@ -36,12 +36,12 @@ function checkForGame(
   if (
     !compatibility ||
     compatibility == "" ||
-    typeof compatibility != "array"
+    !Array.isArray(compatibility)
   ) {
     throw `Invalid compatibility`;
   }
 
-  if (!languages || languages == "" || typeof languages != "array") {
+  if (!languages || languages == "" || !Array.isArray(languages)) {
     throw `Invalid languages`;
   }
 
@@ -55,14 +55,14 @@ function checkForGame(
     throw `Invalid website`;
   }
 
-  rating = rating.trim();
-  if (!rating || rating == "") {
-    throw `Invalid rating`;
-  }
+//   rating = rating.trim();
+//   if (!rating || rating == "") {
+//     throw `Invalid rating`;
+//   }
 
-  if (isNaN(Number(rating)) == true) {
-    throw `Rating is not a number`;
-  }
+//   if (isNaN(Number(rating)) == true) {
+//     throw `Rating is not a number`;
+//   }
 }
 
 router.get('/genre', async (req, res) => {
@@ -138,49 +138,51 @@ router.post("/add", async (req, res) => {
   //for admin only... sessions required
   //Add games using this route
 
-  // let name = req.body.name;
-  // let image = req.body.image; //array
-  // let genre = req.body.genre;
-  // let size = req.body.size;
-  // let compatibility = req.body.compatibility;
-  // let languages = req.body.languages;
-  // let age_rating = req.body.age_rating;
-  // let website = req.body.website;
-  // let rating = req.body.rating;
+  let name = req.body.name;
+  let image = req.body.image; //array
+  let genre = req.body.genre.split(',');
+  let size = req.body.size;
+  let compatibility = req.body.compatibility.split(',');
+  let languages = req.body.languages.split(',');
+  let age_rating = req.body.age_rating;
+  let website = req.body.website;
+  let price = req.body.price;
+  console.log(image)
+//   let rating = req.body.rating;
 
-  // checkForGame(
-  //   name,
-  //   image,
-  //   genre,
-  //   size,
-  //   compatibility,
-  //   languages,
-  //   age_rating,
-  //   website,
-  //   rating
-  // );
-  // try {
-  //   const game = await gamesData.create(
-  //     name,
-  //     image,
-  //     genre,
-  //     size,
-  //     compatibility,
-  //     languages,
-  //     age_rating,
-  //     website,
-  //     rating,
-  //     []
-  //   );
-  //   res.render("posts/admin-homepage", {
-  //     title: "Admin Homepage",
-  //     message: "Game Added",
-  //   });
-  // } catch (e) {
-  //   res
-  //     .status(401)
-  //     .render("posts/admin-homepage", { title: "Admin Homepage", message: e });
-  // }
+  checkForGame(
+    name,
+    "image",
+    genre,
+    size,
+    compatibility,
+    languages,
+    age_rating,
+    website,
+    price
+    // rating
+  );
+  try {
+    const game = await gamesData.create(
+        name,
+        "image",
+        genre,
+        size,
+        compatibility,
+        languages,
+        age_rating,
+        website,
+        price
+    );
+    res.render("posts/admin-homepage", {
+      title: "Admin Homepage",
+      message: "Game Added",
+    });
+  } catch (e) {
+    res
+      .status(401)
+      .render("posts/admin-homepage", { title: "Admin Homepage", message: e });
+  }
 });
 
 router.post("/delete/:game_id", async (req, res) => {

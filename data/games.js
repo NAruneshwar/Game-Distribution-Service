@@ -24,8 +24,6 @@ const create = async (
   languages,
   age_rating,
   website,
-  rating,
-  reviews,
   price
 ) => {
   const gamesCollect = await games();
@@ -86,10 +84,10 @@ const create = async (
     throw "the given website is empty string please provide a website link";
   }
   // actually we dont add reviews here.
-  if (!reviews || !Array.isArray(reviews)) {
-    throw "You must provide an array of reviews";
-  }
-  if (reviews.length === 0) throw "You must provide at least one reviews.";
+  // if (!reviews || !Array.isArray(reviews)) {
+  //   throw "You must provide an array of reviews";
+  // }
+  // if (reviews.length === 0) throw "You must provide at least one reviews.";
 
   if (!price || typeof price != "string") {
     throw "You must provide a price for the book in string format";
@@ -107,8 +105,8 @@ const create = async (
     languages,
     age_rating,
     website,
-    rating,
-    reviews,
+    "rating": '',
+    "reviews":[],
     no_of_downloads: 0,
     price
   };
