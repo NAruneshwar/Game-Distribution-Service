@@ -32,15 +32,15 @@ const reviewsByGameId = async (game_id) => {
     return reviewslist
 }
 
-const deleteGameById = async (review_id) => {
-    check_id(review_id)
-    const reviewsCollect = await reviews();
-    const reviewsDelete = await reviewsCollect.deleteALL({ review_id });
-    if (deletionGame.deletedCount === 0) {
-        throw `Could not delete review`;
-    }
-    return (reviewsDelete)
-}
+// const deleteReviewById = async (review_id) => {
+//     check_id(review_id)
+//     const reviewsCollect = await reviews();
+//     const reviewsDelete = await reviewsCollect.deleteOne({ _id: objectId(review_id) });
+//     if (reviewsDelete.deletedCount === 0) {
+//         throw `Could not delete review`;
+//     }
+//     return 1
+// }
 
 const addReviewForGame = async (game_id, userId, review, rating, media) => {
     check_id(game_id)
@@ -88,6 +88,6 @@ const addReviewForGame = async (game_id, userId, review, rating, media) => {
 
 module.exports = {
     reviewsByGameId,
-    deleteGameById,
+    // deleteReviewById,
     addReviewForGame
 }
