@@ -20,6 +20,7 @@ const main = async () =>{
         console.log(newReview)
         console.log(await reviews.reviewsByGameId("5fd91df1a5932d26d9c1f97b"));
         // console.log(await reviews.deleteGameById("5fd91df1a5932d26d9c1f97b"));
+        console.log(await games.getByGenre("Action"));
        
     }
     catch(e){
