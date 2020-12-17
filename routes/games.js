@@ -1,8 +1,13 @@
 const express = require("express");
 const router = express.Router();
-// const multer = require("multer")
-// const bodyParser = require("body-parser");
-// const fileUpload = require('express-fileupload');
+const multer1 = require('../multer');
+const cloudinary = require('../cloudinary');
+const path = require('path');
+const bodyParser = require('body-parser');
+//file system
+const fs = require('fs');
+const { url } = require('inspector');
+const static = express.static(__dirname + '/public');
 
 const gamesData = require("../data/games");
 const reviewsData = require("../data/reviews");
@@ -79,6 +84,7 @@ router.get("/", async (req, res) => {
   //this is for home page to show all games
   try {
     const games = await gamesData.getAll();
+  
     if (games == null) {
       throw `No games found`;
     }

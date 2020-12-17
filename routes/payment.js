@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 const gamesData = require("../data/games");
 const paymentData = require("../data/payment");
@@ -42,14 +42,12 @@ router.post('/success', async (req, res) => {
         res.status(404).render("posts/genre", { title: "Games", message: e });
     }
 
+  // try{
+  //     const ans=await paymentData.addToGamersProfile(game_id,user_id);
+  //     res.status(200).render("posts/games", { title: "Games", message: "Payment successful!" });
+  // }catch(e){
 
-    // try{
-    //     const ans=await paymentData.addToGamersProfile(game_id,user_id);
-    //     res.status(200).render("posts/games", { title: "Games", message: "Payment successful!" });
-    // }catch(e){
-        
-    // }
-    
+  // }
 });
 
 module.exports = router;

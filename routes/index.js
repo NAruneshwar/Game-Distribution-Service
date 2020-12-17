@@ -1,4 +1,4 @@
-const path = require("path")
+const path = require("path");
 const gamesroutes = require("./games");
 const reviewroutes = require("./reviews");
 const loginroutes = require("./login");
@@ -7,12 +7,13 @@ const adminroutes = require("./admin");
 const profileroutes = require("./profile");
 const paymentroutes = require("./payment");
 const userroutes = require("./users");
+const about = require("./about");
 
 const constructorMethod = (app) => {
   app.use("/admin", adminroutes);
-  app.use('/about',(req,res)=>{
-    res.status(200).sendFile(path.resolve("public/about.html"))
-  })
+  app.use("/about", (req, res) => {
+    res.status(200).sendFile(path.resolve("public/about.html"));
+  });
   app.use("/profile", profileroutes);
   app.use("/reviews", reviewroutes);
   app.use("/games", gamesroutes);
@@ -20,8 +21,10 @@ const constructorMethod = (app) => {
   app.use("/signup", signuproutes);
   app.use("/payment", paymentroutes);
   app.use("/users",userroutes);
+  app.use("/about", about);
+  app.use("/users", userroutes);
   app.get("/", (req, res) => {
-    res.redirect('/games/')
+    res.redirect("/games/");
   });
   app.use("*", (req, res) => {
     res.status(404).render("posts/errors", {
