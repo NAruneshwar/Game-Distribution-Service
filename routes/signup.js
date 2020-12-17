@@ -97,7 +97,7 @@ router.post("/newuser", async (req, res) => {
       data.username,
       data.age,
       data.email,
-      "No",
+      false,
       data.state,
       data.country,
       hashedPassword
