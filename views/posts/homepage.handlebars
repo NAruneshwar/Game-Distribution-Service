@@ -8,3 +8,19 @@
 
 
 </div>
+<div class="col-xs-12 col-sm-12 col-md-12">
+        <h2>List of Games</h2>
+        {{#each games}}
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="card">
+            <a href="/games/1">
+            <img src="/public/images/image_not_available.jpg" alt="Avatar" class="card-image">
+            <div class="card-container">
+                <h4><b>{{name}}</b></h4> 
+                {{!-- {{#each genre }}<p>{{i}}</p>{{/each}} --}}
+            </div>
+            </a>
+            </div>
+        </div>
+        {{/each}}
+    </div>

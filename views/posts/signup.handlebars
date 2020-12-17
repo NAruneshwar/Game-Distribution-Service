@@ -6,66 +6,68 @@
 
         <div>
             <label>
-                <input type="text" name="first_name" class="signup-info" placeholder="First Name">
+                <input type="text" name="first_name" id="first_name" class="signup-info" placeholder="First Name" required>
             </label>
         </div>
 
         <div>
             <label>
-                <input type="text" name="last_name" class="signup-info" placeholder="Last Name" required>
+                <input type="text" name="last_name" id="last_name" class="signup-info" placeholder="Last Name" required>
             </label>
         </div>
 
         <div>
             <label>
-                <input type="number" name="age" class="signup-info" placeholder="Age" required>
+                <input type="number" name="age" id="age" class="signup-info" placeholder="Age" required>
             </label>
         </div>
 
         <div>
             <label>
-                <input type="email" name="email" class="signup-info" placeholder="Email" required>
+                <input type="email" name="email" id="email" class="signup-info" placeholder="Email" required>
             </label>
         </div>
 
         <div>
             <label>
-                <input type="text" name="username" class="signup-info" placeholder="Username" required>
+                <input type="text" name="username" id="username" class="signup-info" placeholder="Username" required>
             </label>
         </div>
 
         <div>
             <label>
-                <input type="text" name="state" class="signup-info" placeholder="State" required>
+                <input type="text" name="state" id="state" class="signup-info" placeholder="State" required>
             </label>
         </div>
 
         <div>
             <label>
-                <input type="text" name="country" class="signup-info" placeholder="Country" required>
+                <input type="text" name="country" id="country" class="signup-info" placeholder="Country" required>
             </label>
         </div>
 
         <div>
             <label>
-                <input type="password" name="password" class="signup-info" placeholder="Password" required>
-            </label>
+                <input type="password" name="password" id="password" class="signup-info" placeholder="Password" required>
+            </label><br>
+            <span id="passwordchar" hidden></span>
         </div>
 
         <div>
             <label>
-                <input type="password" name="retypepassword" class="signup-info" placeholder="Re-enter Password"
+                <input type="password" name="retypepassword" id="retypepassword" class="signup-info retypepassword" placeholder="Re-enter Password" 
                     required>
-            </label>
+            </label><br>
+            <span id="matchpassword" hidden></span>
         </div>
 
         <div>
             <p>
-                <span><input type="checkbox" required></span> Agree terms and conditions.
+                <label><input type="checkbox" required></label> Agree terms and conditions.
             </p>
         </div>
 
-        <button class="signupbtn">Sign Up</button>
+        <button class="signupbtn" disabled>Sign Up</button>
 
     </form>
 
