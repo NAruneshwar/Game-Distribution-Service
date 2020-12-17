@@ -428,3 +428,10 @@ a.wb:hover {
 span.price { 
     float: right;
 }
+
+#game_img{
+  border: 1px solid #000;
+  border-radius: 4px;
+  padding: 5px;
+  width: 200px;
+}
