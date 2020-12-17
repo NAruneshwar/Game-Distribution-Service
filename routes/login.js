@@ -3,8 +3,7 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const logindata = require("../data/login");
 const userData = require("../data/users");
-const session = require('express-session')
-
+const session = require("express-session");
 
 function checkUsernamePassword(uname, pswd) {
   uname = uname.trim();
@@ -27,12 +26,18 @@ router.post("/check", async (req, res) => {
   checkUsernamePassword(username, password);
   try {
     const users = await logindata.check(username, password);
-    if(users!=null){
+    if (users != null) {
       // console.log(users)
-      req.session.user = {"username": username,"uid":users._id,"admin":users.admin};
+      req.session.user = {
+        username: username,
+        uid: users._id,
+        admin: users.admin,
+      };
       res.redirect("/");
     }
-    res.status(401).render("posts/login", { message: "Username or password is not correct" });
+    res.status(401).render("posts/login", {
+      message: "Username or password is not correct",
+    });
   } catch (e) {
     res.status(401).render("posts/login", { message: e });
   }
@@ -46,24 +51,18 @@ router.get("/check_username", async (req, res) => {
   return result;
 });
 
-
-router.get("/logout",async(req,res)=>{
+router.get("/logout", async (req, res) => {
   if (req.session.user) {
     const newDelCookie = new Date();
     newDelCookie.setHours(newDelCookie.getHours() - 1);
-    res.cookie('lastAccessed', '', { expires: newDelCookie });
-    res.clearCookie('lastAccessed');
+    res.cookie("lastAccessed", "", { expires: newDelCookie });
+    res.clearCookie("lastAccessed");
 
     req.session.destroy();
     return res.redirect("/");
-}
-else{
-  return res.redirect("/");
-
-}
+  } else {
+    return res.redirect("/");
+  }
 });
-
-
-
 
 module.exports = router;
