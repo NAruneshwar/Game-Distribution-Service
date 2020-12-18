@@ -1,0 +1,80 @@
+[{
+  "_id": {
+    "$oid": "5fdc30527417926435d7ed56"
+  },
+  "name": "GTA V",
+  "image": [],
+  "genre": [
+    "action-adventure",
+    "rpg",
+    "multiplayer"
+  ],
+  "size": "25",
+  "compatibility": [
+    "Windowsos",
+    "Xbox",
+    "PS"
+  ],
+  "languages": [
+    "English",
+    "French",
+    "German"
+  ],
+  "age_rating": "21",
+  "website": "https:/www.gta5.com",
+  "rating": "",
+  "reviews": [],
+  "no_of_downloads": 1,
+  "price": "5"
+},{
+  "_id": {
+    "$oid": "5fdc337e7417926435d7ed59"
+  },
+  "name": "World of Tanks",
+  "image": [],
+  "genre": [
+    "Action",
+    "strategy"
+  ],
+  "size": "20",
+  "compatibility": [
+    "Windowsos",
+    "Macos",
+    "Xbox"
+  ],
+  "languages": [
+    "English",
+    "French"
+  ],
+  "age_rating": "6",
+  "website": "https://worldoftanks.asia/",
+  "rating": "",
+  "reviews": [],
+  "no_of_downloads": 0,
+  "price": "1"
+},{
+  "_id": {
+    "$oid": "5fdc3570b2cc0e66bcb50ac4"
+  },
+  "name": "wwe 2K25",
+  "image": [],
+  "genre": [
+    "action-adventure",
+    "adventure"
+  ],
+  "size": "2",
+  "compatibility": [
+    "Windowsos",
+    "PS"
+  ],
+  "languages": [
+    "Arabic",
+    "French"
+  ],
+  "age_rating": "4",
+  "website": "http:/www.wwe.com",
+  "rating": "",
+  "reviews": [],
+  "no_of_downloads": 0,
+  "price": "34"
+}]

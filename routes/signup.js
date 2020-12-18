@@ -113,7 +113,7 @@ router.post("/newuser", async (req, res) => {
   data = req.body;
   try {
     checksForNewUser(
-      xss(first_name),
+      xss(data.first_name),
       xss(data.last_name),
       xss(data.username),
       xss(data.age),

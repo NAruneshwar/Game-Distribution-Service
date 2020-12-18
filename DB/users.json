@@ -1,0 +1,53 @@
+[{
+  "_id": {
+    "$oid": "5fdb8f72f58c443022b2e00c"
+  },
+  "first_name": "Arun",
+  "last_name": "Nalluri",
+  "username": "arun",
+  "age": 24,
+  "email": "arun.nalluri@gmail.com",
+  "admin": "false",
+  "state": "nj",
+  "country": "usa",
+  "hashedPassword": "$2a$16$VDcj5vjf8WiMpx8gFKZQnOPIwRA.RSLfs6kYwouYPCHQX94.y76De",
+  "reviews": [],
+  "comment": [],
+  "game_ids": [
+    "5fdb49bea9be7b1c8534f033"
+  ]
+},{
+  "_id": {
+    "$oid": "5fdc30b67417926435d7ed57"
+  },
+  "first_name": "arun",
+  "last_name": "nalluri",
+  "username": "nonadmin",
+  "age": 23,
+  "email": "arun.nalluri@gmail.com",
+  "admin": false,
+  "state": "NJ",
+  "country": "USA",
+  "hashedPassword": "$2a$16$abTR3gKYk9bs82umdHXl9ehwcfUYvBJ8vDcTvvXV.ffxY2NjTbw2O",
+  "reviews": [],
+  "comment": [],
+  "game_ids": [
+    "5fdc30527417926435d7ed56"
+  ]
+},{
+  "_id": {
+    "$oid": "5fdc34357417926435d7ed5a"
+  },
+  "first_name": "patrick",
+  "last_name": "hill",
+  "username": "phill",
+  "age": 40,
+  "email": "phill@stevens.edu",
+  "admin": true,
+  "state": "NY",
+  "country": "USA",
+  "hashedPassword": "$2a$16$R8Rjc9fZNTweliQWiHc6o.7eo4Tk7jVGgL7ri4Axnb54jAOUUrrAO",
+  "reviews": [],
+  "comment": [],
+  "game_ids": []
+}]

@@ -337,7 +337,7 @@ router.post("/add", async (req, res) => {
       try {
         const game = await gamesData.create(
           name,
-          "image",
+          [],
           genre,
           size,
           compatibility,
