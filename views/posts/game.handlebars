@@ -21,14 +21,17 @@
         <dt class="gdata-info">Website: {{data.website}}</dt> 
 
         <dt class="gdata-info">Price: ${{data.price}}</dt> 
-
-        <form action="/payment/{{data._id}}" method="GET">
-        <input type="submit" class="buy" value="Buy">
-        </form>
+        {{#if userLoggedIn}}
+            {{!-- {{#if userAdmin}} --}}
+            <form action="/payment/{{data._id}}" method="GET">
+                <input type="submit" class="buy" value="Buy">
+            </form>
+            {{!-- {{/if}} --}}
+        {{/if}}
         <hr>
 
         <dt class="gdata-info">Average Rating: {{average_rating}}/10</dt> 
-         {{#if user_session}}
+         {{#if userLoggedIn}}
             <form action="/reviews/add/{{data._id}}" method="POST">
                 <input type="hidden" name="user_id" value={{user_session}}>
 
@@ -57,12 +60,16 @@
                 <input class="buy" type="submit" value="Post">
             </form>
          {{/if}}
-        <dt class="gdata-info">Reviews:</dt> 
+        <dt class="gdata-info">Reviews:</dt>
+        {{#if reviews}}
         {{#each reviews}}
             <img src="">
             <p><h4>Username:<span>{{username}}</span></h4>Rating by user:{{rating}}</p>
             <p>{{review}}</p>
         {{/each}}
+        {{else}}
+        <p>Currently, There are no reviews for this game.</p>
+        {{/if}}
     </dl> 
 
 </div> 
