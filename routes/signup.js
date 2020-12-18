@@ -113,7 +113,7 @@ router.post("/newuser", async (req, res) => {
   data = req.body;
   try {
     checksForNewUser(
-      xss(first_name),
+      xss(data.first_name),
       xss(data.last_name),
       xss(data.username),
       xss(data.age),
@@ -124,14 +124,14 @@ router.post("/newuser", async (req, res) => {
     );
     const hashedPassword = await bcrypt.hash(data.password, 16);
     const user = await userData.create(
-      data.first_name,
-      data.last_name,
-      data.username,
-      data.age,
-      data.email,
+      xss(data.first_name),
+      xss(data.last_name),
+      xss(data.username),
+      xss(data.age),
+      xss(data.email),
       false,
-      data.state,
-      data.country,
+      xss(data.state),
+      xss(data.country),
       hashedPassword
     );
     res.render("posts/login", {
