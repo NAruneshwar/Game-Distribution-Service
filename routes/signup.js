@@ -67,8 +67,35 @@ function checksForNewUser(
 }
 
 router.get("/", async (req, res) => {
-  res.render("posts/signup", { title: "Sign Up" });
-  return;
+  if (req.session.user) {
+    if (req.session.user.admin) {
+      // res.render("posts/homepage", {
+      //   title: "Sign Up",
+      //   // data: games,
+      //   userLoggedIn: true,
+      //   userAdmin: true,
+      // });
+      // return;
+
+      res.redirect("/");
+      return;
+    } else {
+      res.redirect("/");
+      return;
+    }
+  } else {
+    // console.log("hello2");
+    // userLoggedIn = false;
+    res.status(200).render("posts/signup", {
+      title: "Sign Up",
+      // data: games,
+      userLoggedIn: false,
+      userAdmin: false,
+    });
+    return;
+  }
+  // res.render("posts/signup", { title: "Sign Up" });
+  // return;
 });
 
 router.get("/username", async (req, res) => {

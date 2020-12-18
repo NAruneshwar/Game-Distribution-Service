@@ -5,20 +5,22 @@ const gamesdata = require("../data/games");
 const usersdata = require("../data/users");
 
 router.get("/", async (req, res) => {
-  let userLoggedIn = false;
-  let userId = req.session.AuthCookie;
-  if (!userId) {
-    userLoggedIn = false;
-  } else {
-    userLoggedIn = true;
-  }
+  // let userLoggedIn = false;
+  // let userId = req.session.AuthCookie;
+  // if (!userId) {
+  //   userLoggedIn = false;
+  // } else {
+  //   userLoggedIn = true;
+  // }
   if (req.session.user) {
     if (req.session.user.admin) {
       res.render("posts/admin-homepage", {
         title: "Admin Homepage",
-        userLoggedIn: userLoggedIn,
-        userAdmin: req.session.user.admin,
+        userLoggedIn: true,
+        userAdmin: true,
       });
+    } else {
+      res.redirect("/");
     }
   } else {
     res.redirect("/");
