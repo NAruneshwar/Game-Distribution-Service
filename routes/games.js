@@ -23,7 +23,6 @@ function checkForGame(
   age_rating,
   website
 ) {
-  name = name.trim();
   if (!name || name == "" || typeof name != "string") {
     throw `Invalid name`;
   }
@@ -303,7 +302,7 @@ router.post("/add", async (req, res) => {
   //for admin only... sessions required
   //Add games using this route
   // console.log(req.body.game_name);
-  let userInfo = await req.body;
+  let userInfo = req.body;
   console.log(userInfo);
   if (req.session.user) {
     if (req.session.user.admin) {
