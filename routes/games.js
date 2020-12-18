@@ -299,18 +299,38 @@ router.get("/:game_id", async (req, res) => {
   }
 });
 
-router.post("/add", async (req, res) => {
+router.post("/add", multer1.upload, async (req, res) => {
   //for admin only... sessions required
   //Add games using this route
   // console.log(req.body.game_name);
   let userInfo = req.body;
   console.log(userInfo);
+
   if (req.session.user) {
     if (req.session.user.admin) {
       // console.log(req.body.game_name);
       let name = userInfo["game_name"];
       // console.log(req.files.image);
       //   let {imagename,imagedata} = req.files.image; //array
+
+
+      const uploader = async(path) => await cloudinary.uploads(path, 'image');
+      const urls = [];
+      const files = req.files;
+
+      if (files.length == 0) throw 'Please select atleast one image';
+
+      for (const file of files) {
+        const { path } = file;
+        const newPath = await uploader(path);
+        urls.push(newPath);
+
+        //deleting file from server after upload
+        // fs.unlinkSync(path);
+      }
+
+
+
       let genre = userInfo.genre;
       let size = userInfo.size;
       let compatibility = userInfo.compatibility;

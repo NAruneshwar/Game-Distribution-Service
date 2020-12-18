@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //set storage Engine
 const storage = multer.diskStorage({
-  destination: './public/uploads/',
+  destination: './public/images/',
   //cb means call back
   //this randomly generates a name for the image everytime its uplopaded
   filename: function (req, file, cb) {
