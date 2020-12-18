@@ -40,7 +40,34 @@ router.post("/add/:game_id", async (req, res) => {
           image
         );
         // console.log(reviewAdded);
-        return res.redirect(req.get('referer'));
+        return res.redirect(req.get("referer"));
+      } catch (e) {
+        res.status(401).redirect("/games/".game_id);
+      }
+    } else {
+      let game_id = req.params.game_id;
+      data = req.body;
+      // console.log(game_id);
+      try {
+        let user_id = req.session.user.uid;
+        // let user_id = data.user_id;
+        let comment = xss(data.comment);
+        let rating = xss(data.rating);
+        let image = "some string for image";
+        // console.log(user_id)
+        // console.log(review)
+        // console.log(rating)
+        // console.log(game_id)
+        // NOT WORKING
+        const reviewAdded = await reviewsData.addReviewForGame(
+          game_id,
+          user_id,
+          comment,
+          rating,
+          image
+        );
+        // console.log(reviewAdded);
+        return res.redirect(req.get("referer"));
       } catch (e) {
         res.status(401).redirect("/games/".game_id);
       }
