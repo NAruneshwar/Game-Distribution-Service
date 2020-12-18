@@ -18,7 +18,7 @@
      
         <div class="gdata-info">Languages: {{data.languages}}</div> 
   
-        <div class="gdata-info">Age Rating: {{data.age_rating}}</div> 
+        <div class="gdata-info">Age: {{data.age_rating}}</div> 
  
         <div class="gdata-info">Website: {{data.website}}</div> 
 
@@ -32,7 +32,7 @@
         {{/if}}
         <hr>
 
-        <div class="gdata-info">Average Rating: {{average_rating}}/10</div> 
+        <div class="gdata-info">Average Rating: {{#if average_rating}}{{average_rating}}/10{{else}}Not Rated Yet{{/if}}</div> 
          {{#if userLoggedIn}}
             <form action="/reviews/add/{{data._id}}" method="POST">
                 {{!-- <input type="hidden" name="user_id" value={{user_session}}> --}}
