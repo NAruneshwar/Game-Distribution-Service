@@ -110,6 +110,7 @@ router.get("/logout", async (req, res) => {
     newDelCookie.setHours(newDelCookie.getHours() - 1);
     res.cookie("lastAccessed", "", { expires: newDelCookie });
     res.clearCookie("lastAccessed");
+    req.session.destroy();
 
     // req.logout();
     // req.session = null;
