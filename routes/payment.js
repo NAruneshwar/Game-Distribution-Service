@@ -3,6 +3,7 @@ const router = express.Router();
 const gamesData = require("../data/games");
 const paymentData = require("../data/payment");
 const userData = require("../data/users");
+var xss = require("xss");
 
 router.get("/:game_id", async (req, res) => {
   const game_id = req.params.game_id;
@@ -66,21 +67,20 @@ router.get("/:game_id", async (req, res) => {
 router.post("/success", async (req, res) => {
   let updateObject = {};
   // const usersCollect = await users();
-  let userid = req.body.user_id;
+  let userid = xss(req.body.user_id);
   const theuser = await userData.getUserById(userid);
   // console.log(theuser);
   let arraySet = new Set();
   for (i = 0; i < theuser.game_ids.length; i++) {
     arraySet.add(theuser.game_ids[i]);
   }
-  
-  game_id = req.body.game_id;
+  game_id = xss(req.body.game_id);
   arraySet.add(game_id);
   updateObject.game_ids = Array.from(arraySet);
   try {
-    const gameupdate = await gamesData.updateGameDownloads(game_id)
+    const gameupdate = await gamesData.updateGameDownloads(game_id);
     const user = await paymentData.addToGamersProfile(userid, updateObject);
-    if (user == 1 && gameupdate==1) {
+    if (user == 1 && gameupdate == 1) {
       if (req.session.user) {
         if (req.session.user.admin) {
           res.redirect("/");

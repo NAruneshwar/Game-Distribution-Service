@@ -4,6 +4,7 @@ const bcrypt = require("bcryptjs");
 const logindata = require("../data/login");
 const userData = require("../data/users");
 const session = require("express-session");
+var xss = require("xss");
 
 function checkUsernamePassword(uname, pswd) {
   uname = uname.trim();
@@ -49,8 +50,8 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/check", async (req, res) => {
-  username = req.body.username;
-  password = req.body.password;
+  username = xss(req.body.username);
+  password = xss(req.body.password);
   checkUsernamePassword(username, password);
   // console.log(username);
   try {

@@ -3,6 +3,7 @@ const router = express.Router();
 const logindata = require("../data/login");
 const gamesdata = require("../data/games");
 const usersdata = require("../data/users");
+var xss = require("xss");
 
 router.get("/", async (req, res) => {
   // let userLoggedIn = false;
@@ -156,8 +157,8 @@ router.get("/delete_user", async (req, res) => {
 });
 
 router.post("/check", async (req, res) => {
-  username = req.body.username;
-  password = req.body.password;
+  username = xss(req.body.username);
+  password = xss(req.body.password);
   checkUsernamePassword(username, password);
   hashedPassword = await bcrypt.hash(password, 16);
   try {
