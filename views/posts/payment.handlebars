@@ -4,17 +4,17 @@
     
     <hr>
 
-    <dl>
-        <dt class="order-item" >{{game.name}}</dt>
-    </dl>
+    <div>
+        <div class="order-item" >{{game.name}}</div>
+    </div>
     
    
-    <dl>
-        <dt class="order-price">Price: {{price}}</dt>
-        <dt class="order-price">Tax: 8%</dt>
+    <div>
+        <div class="order-price">Price: {{price}}</div>
+        <div class="order-price">Tax: 8%</div>
         <hr>
-        <dt class="order-price">TOTAL: {{total_price}}</dt>
-    </dl>
+        <div class="order-price">TOTAL: {{total_price}}</div>
+    </div>
     
     <form action="/payment/success" method="post">
     <input type="hidden" value={{game._id}} name="game_id">

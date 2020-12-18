@@ -4,25 +4,25 @@
 
     <hr>
     
-    <dl> 
+    <div>
         {{#if data.image}}
         <img class="gdata-info" alt="{{data.name}}" src="{{data.image}}" id="game_img"/>
         {{else}}
         <img class="gdata-info" alt="Image Not Found" src="/public/images/image_not_available.jpg" id="game_img"/>
         {{/if}}
-        <dt class="gdata-info">Genre: {{data.genre}}</dt> 
+        <div class="gdata-info">Genre: {{data.genre}}</div> 
 
-        <dt class="gdata-info">Size: {{data.size}}</dt> 
+        <div class="gdata-info">Size: {{data.size}}</div> 
        
-        <dt class="gdata-info">Compatibility: {{data.compatibility}}</dt> 
+        <div class="gdata-info">Compatibility: {{data.compatibility}}</div> 
      
-        <dt class="gdata-info">Languages: {{data.languages}}</dt> 
+        <div class="gdata-info">Languages: {{data.languages}}</div> 
   
-        <dt class="gdata-info">Age Rating: {{data.age_rating}}</dt> 
+        <div class="gdata-info">Age Rating: {{data.age_rating}}</div> 
  
-        <dt class="gdata-info">Website: {{data.website}}</dt> 
+        <div class="gdata-info">Website: {{data.website}}</div> 
 
-        <dt class="gdata-info">Price: ${{data.price}}</dt> 
+        <div class="gdata-info">Price: ${{data.price}}</div> 
         {{#if userLoggedIn}}
             {{!-- {{#if userAdmin}} --}}
             <form action="/payment/{{data._id}}" method="GET">
@@ -32,37 +32,37 @@
         {{/if}}
         <hr>
 
-        <dt class="gdata-info">Average Rating: {{average_rating}}/10</dt> 
+        <div class="gdata-info">Average Rating: {{average_rating}}/10</div> 
          {{#if userLoggedIn}}
             <form action="/reviews/add/{{data._id}}" method="POST">
                 {{!-- <input type="hidden" name="user_id" value={{user_session}}> --}}
 
-                <dl>
-                    <dt class="gdata-info">
+                <div>
+                    <div class="gdata-info">
                         <label>
                             Image:<input class="rv" type="file" name="image">
                         </label>
-                    </dt>
+                    </div>
 
-                    <dt class="gdata-info">
+                    <div class="gdata-info">
                         <label>
                             Comment: <input class="rv" type="text" name="comment" placeholder="Write a review here">
                         </label>
-                    </dt>
+                    </div>
 
-                    <dt class="gdata-info">
+                    <div class="gdata-info">
                         <label>
                             Rating: <input class="rv" type="number" name="rating" placeholder="Rating" max="10" min="1">
                         </label>
-                    </dt>
+                    </div>
 
 
-                </dl>
+                </div>
                
                 <input class="buy" type="submit" value="Post">
             </form>
          {{/if}}
-        <dt class="gdata-info">Reviews:</dt>
+        <div class="gdata-info">Reviews:</div>
         {{#if reviews}}
         {{#each reviews}}
             <img src="">
@@ -72,7 +72,7 @@
         {{else}}
         <p>Currently, There are no reviews for this game.</p>
         {{/if}}
-    </dl> 
+    </div>
 
 </div> 
 
