@@ -78,8 +78,9 @@ router.post("/success", async (req, res) => {
   arraySet.add(game_id);
   updateObject.game_ids = Array.from(arraySet);
   try {
+    const gameupdate = await gamesData.updateGameDownloads(game_id);
     const user = await paymentData.addToGamersProfile(userid, updateObject);
-    if (user == 1) {
+    if (user == 1 && gameupdate == 1) {
       if (req.session.user) {
         if (req.session.user.admin) {
           res.redirect("/");
