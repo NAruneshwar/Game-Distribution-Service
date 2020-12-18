@@ -164,10 +164,33 @@ const getByGenre = async (genre) => {
   return gamesList;
 };
 
+const updateGameDownloads = async (game_id) => {
+  // console.log("this is user id:"+user_id)    
+  // console.log("this is to be posted in game_ids array"+updateObject)
+  // console.log("Done right!")
+  // return;
+  const gamefromId = await getOne(game_id);
+  let total = gamefromId.no_of_downloads
+  let no_of_downloads = Number(total) + 1;
+  let updateObject = {
+    no_of_downloads: no_of_downloads
+  }
+  const gamesCollection = await games();
+  const isUpdated = await gamesCollection.updateOne({ _id: objectId(game_id) }, { $set: updateObject });
+  if (isUpdated.matchedCount > 0) {
+    return 1
+  } else {
+    throw "Something went wrong!"
+  }
+
+
+}
+
 module.exports = {
   create,
   getAll,
   getOne,
   remove,
   getByGenre,
+  updateGameDownloads
 };
