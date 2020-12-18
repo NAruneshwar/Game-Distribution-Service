@@ -236,7 +236,7 @@ router.get("/:game_id", async (req, res) => {
         rating: reviews[i].rating,
       });
     }
-    var average_rating = ratingsum / total_ratings;
+    var average_rating = (ratingsum / total_ratings).toFixed(2);
 
     if (req.session.user) {
       if (req.session.user.admin) {
