@@ -214,6 +214,7 @@ a.wb:hover {
   width: 100%;
   outline: none;
   font-size: 20px;
+  color: #11498a;
 }
 
 .admin-control {
@@ -531,4 +532,17 @@ span.price {
     font-size: 18px;
     color: #11498a;
     font-weight: bold;
+}
+
+.about h1 {
+    color: #11498a;
+    margin-bottom: 30px;
+}
+
+.about-info {
+  border-radius: 10px;
+  margin: 12px 0;
+  width: fit-content;
+  color: #11498a;;
+  font-size: 20px;
 }
