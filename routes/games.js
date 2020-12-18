@@ -156,6 +156,7 @@ router.get("/genre/:genre", async (req, res) => {
   const genre = req.params.genre;
   try {
     const games = await gamesData.getByGenre(genre);
+    // console.log(games);
 
     if (req.session.user) {
       if (req.session.user.admin) {

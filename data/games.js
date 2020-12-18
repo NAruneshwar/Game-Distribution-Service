@@ -105,10 +105,10 @@ const create = async (
     languages,
     age_rating,
     website,
-    "rating": '',
-    "reviews":[],
+    rating: "",
+    reviews: [],
     no_of_downloads: 0,
-    price
+    price,
   };
   const insertInfo = await gamesCollect.insertOne(newGame);
   if (insertInfo.insertedCount === 0) throw "Could not add Game please debug";
@@ -129,8 +129,8 @@ const getAll = async () => {
 
 const getOne = async (game_id) => {
   const gamesCollect = await games();
-  const gamesList = await gamesCollect.findOne({ _id: objectId(game_id) });;
-  if (gamesList == null) throw 'No game exist in the DB with that id';
+  const gamesList = await gamesCollect.findOne({ _id: objectId(game_id) });
+  if (gamesList == null) throw "No game exist in the DB with that id";
   gamesList._id = gamesList._id.toString();
   return gamesList;
 };
@@ -152,12 +152,13 @@ const getByGenre = async (genre) => {
   if (genre.trim() === "") {
     throw "the given genre is empty string";
   }
-  let gamesList = []
-  gamesCollect = await games();
+  let gamesList = [];
+  // gamesCollect = await games();
   let allGames = await getAll();
+  // console.log(allGames[0].genre.includes("action"));
   for (i = 0; i < allGames.length; i++) {
     if (allGames[i].genre.includes(genre)) {
-      gamesList[i] = {"name":allGames[i].name,"id":allGames[i]._id};
+      gamesList[i] = { name: allGames[i].name, id: allGames[i]._id };
     }
   }
   return gamesList;
