@@ -10,14 +10,15 @@
     <form method="POST" action="/games/add" >
 
         <div>
-            <label for="game_name">Game Title
+            <label>Game Title
                 <input type="text" name="game_name" class="add-info" placeholder="Game Title" required>
             </label>
+            {{!-- <label for="game_name"></label> --}}
         </div>
 
 
         <div>
-            <p class="add-info"> Images: <span><input type="file" id="image" name="image" accept="image/*" required></span></p>
+            <label class="add-info"> Images: <input type="file" id="image" name="image" accept="image/*" required></label>
         </div>
 
         <div>
