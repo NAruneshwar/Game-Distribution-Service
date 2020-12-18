@@ -68,9 +68,10 @@ router.post("/success", async (req, res) => {
   // const usersCollect = await users();
   let userid = req.body.user_id;
   const theuser = await userData.getUserById(userid);
+  // console.log(theuser);
   let arraySet = new Set();
   for (i = 0; i < theuser.game_ids.length; i++) {
-    arraySet.add(game_ids[i]);
+    arraySet.add(theuser.game_ids[i]);
   }
   game_id = req.body.game_id;
   arraySet.add(game_id);
@@ -78,6 +79,24 @@ router.post("/success", async (req, res) => {
   try {
     const user = await paymentData.addToGamersProfile(userid, updateObject);
     if (user == 1) {
+      if (req.session.user) {
+        if (req.session.user.admin) {
+          res.redirect("/");
+          return;
+        } else {
+          res.render("posts/genre", {
+            title: "Games",
+            message: "Payment successful! Browse more interesting games here!",
+            userLoggedIn: true,
+            userAdmin: false,
+          });
+          return;
+        }
+      } else {
+        res.redirect("/");
+        return;
+      }
+
       res.status(200).render("posts/genre", {
         title: "Games",
         message: "Payment successful! Browse more interesting games here!",
