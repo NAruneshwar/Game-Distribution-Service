@@ -30,33 +30,129 @@ router.get("/", async (req, res) => {
 router.get("/add_game", async (req, res) => {
   if (req.session.user) {
     if (req.session.user.admin) {
-      res.render("posts/add", { title: "Add Game" });
+      res.render("posts/add", {
+        title: "Add Game",
+        userLoggedIn: true,
+        userAdmin: true,
+      });
+      return;
+    } else {
+      // res.render("posts/add", {
+      //   title: "Add Game",
+      //   userLoggedIn: true,
+      //   userAdmin: false,
+      // });
+      res.redirect("/");
+      return;
     }
   } else {
     res.redirect("/");
+    // console.log("hello2");
+    // userLoggedIn = false;
+    // res.status(200).render("posts/add", {
+    //   title: "Add Game",
+    //   userLoggedIn: false,
+    //   userAdmin: false,
+    // });
+    return;
   }
+  // if (req.session.user) {
+  //   if (req.session.user.admin) {
+  //     res.render("posts/add", { title: "Add Game" });
+  //   }
+  // } else {
+  //   res.redirect("/");
+  // }
 });
 
 router.get("/delete_game", async (req, res) => {
-  if (req.session.user) {
-    if (req.session.user.admin) {
-      const games = await gamesdata.getAll();
-      res.render("posts/delete", { title: "Delete Game", data: games });
+  try {
+    const games = await gamesdata.getAll();
+    if (req.session.user) {
+      if (req.session.user.admin) {
+        res.render("posts/delete", {
+          title: "Delete Game",
+          data: games,
+          userLoggedIn: true,
+          userAdmin: true,
+        });
+        return;
+      } else {
+        // res.render("posts/add", {
+        //   title: "Add Game",
+        //   userLoggedIn: true,
+        //   userAdmin: false,
+        // });
+        res.redirect("/");
+        return;
+      }
+    } else {
+      res.redirect("/");
+      // console.log("hello2");
+      // userLoggedIn = false;
+      // res.status(200).render("posts/add", {
+      //   title: "Add Game",
+      //   userLoggedIn: false,
+      //   userAdmin: false,
+      // });
+      return;
     }
-  } else {
-    res.redirect("/");
+  } catch (e) {
+    res.status(404).render("posts/genre", { title: "Browse", message: e });
   }
+  // if (req.session.user) {
+  //   if (req.session.user.admin) {
+  //     const games = await gamesdata.getAll();
+  //     res.render("posts/delete", { title: "Delete Game", data: games });
+  //   }
+  // } else {
+  //   res.redirect("/");
+  // }
 });
 
 router.get("/delete_user", async (req, res) => {
-  if (req.session.user) {
-    if (req.session.user.admin) {
-      const users = await usersdata.getAllUsers();
-      res.render("posts/deleteuser", { title: "Delete User", data: users });
+  try {
+    const users = await usersdata.getAllUsers();
+    if (req.session.user) {
+      if (req.session.user.admin) {
+        res.render("posts/deleteuser", {
+          title: "Delete User",
+          data: users,
+          userLoggedIn: true,
+          userAdmin: true,
+        });
+        return;
+      } else {
+        // res.render("posts/add", {
+        //   title: "Add Game",
+        //   userLoggedIn: true,
+        //   userAdmin: false,
+        // });
+        res.redirect("/");
+        return;
+      }
+    } else {
+      res.redirect("/");
+      // console.log("hello2");
+      // userLoggedIn = false;
+      // res.status(200).render("posts/add", {
+      //   title: "Add Game",
+      //   userLoggedIn: false,
+      //   userAdmin: false,
+      // });
+      return;
     }
-  } else {
-    res.redirect("/");
+  } catch (e) {
+    res.status(404).render("posts/genre", { title: "Browse", message: e });
   }
+  // if (req.session.user) {
+  //   if (req.session.user.admin) {
+  //     const users = await usersdata.getAllUsers();
+  //     res.render("posts/deleteuser", { title: "Delete User", data: users });
+  //   }
+  // } else {
+  //   res.redirect("/");
+  // }
 });
 
 router.post("/check", async (req, res) => {
