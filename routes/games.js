@@ -100,7 +100,7 @@ router.get("/genre", async (req, res) => {
     return;
   }
 
-  res.render("posts/genre", { title: "Games By Genre" });
+  // res.render("posts/genre", { title: "Games By Genre" });
 });
 
 router.get("/", async (req, res) => {
@@ -302,19 +302,23 @@ router.get("/:game_id", async (req, res) => {
 router.post("/add", async (req, res) => {
   //for admin only... sessions required
   //Add games using this route
+  // console.log(req.body.game_name);
+  let userInfo = await req.body;
+  console.log(userInfo);
   if (req.session.user) {
     if (req.session.user.admin) {
-      let name = req.body.name;
-      console.log(req.files.image);
+      // console.log(req.body.game_name);
+      let name = userInfo["game_name"];
+      // console.log(req.files.image);
       //   let {imagename,imagedata} = req.files.image; //array
-      let genre = req.body.genre.split(",");
-      let size = req.body.size;
-      let compatibility = req.body.compatibility.split(",");
-      let languages = req.body.languages.split(",");
-      let age_rating = req.body.age_rating;
-      let website = req.body.website;
-      let price = req.body.price;
-      //   console.log(image)
+      let genre = userInfo.genre;
+      let size = userInfo.size;
+      let compatibility = userInfo.compatibility;
+      let languages = userInfo.languages;
+      let age_rating = userInfo.age_rating;
+      let website = userInfo.website;
+      let price = userInfo.price;
+      // console.log(name);
 
       //   let rating = req.body.rating;
 

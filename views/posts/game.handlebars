@@ -5,9 +5,11 @@
     <hr>
     
     <dl> 
-        
+        {{#if data.image}}
         <img class="gdata-info" alt="{{data.name}}" src="{{data.image}}" id="game_img"/>
-        
+        {{else}}
+        <img class="gdata-info" alt="Image Not Found" src="/public/images/image_not_available.jpg" id="game_img"/>
+        {{/if}}
         <dt class="gdata-info">Genre: {{data.genre}}</dt> 
 
         <dt class="gdata-info">Size: {{data.size}}</dt> 
@@ -33,7 +35,7 @@
         <dt class="gdata-info">Average Rating: {{average_rating}}/10</dt> 
          {{#if userLoggedIn}}
             <form action="/reviews/add/{{data._id}}" method="POST">
-                <input type="hidden" name="user_id" value={{user_session}}>
+                {{!-- <input type="hidden" name="user_id" value={{user_session}}> --}}
 
                 <dl>
                     <dt class="gdata-info">

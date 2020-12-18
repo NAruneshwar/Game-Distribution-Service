@@ -5,24 +5,21 @@
 
     <p class="req">Please provide the following details to add a game to the store:</p>
 
-    <form method ="POST" action="/games/add"  enctype="multipart/form-data" >
+    <form method="POST" action="/games/add"  enctype="multipart/form-data" >
 
         <div>
-            <label>Game Title
-            <input type="text" name ="name" id="name" class="add-info" placeholder="Game Title" required>
+            <label for="game_name">Game Title
+            <input type="text" name="game_name" class="add-info" placeholder="Game Title" required>
             </label>
         </div>
 
 
         <div>
-            
-                <p class="add-info"> Images: <span><input type="file" id="image" name="image" accept="image/*" required></span></p>
-            
+            <p class="add-info"> Images: <span><input type="file" id="image" name="image" accept="image/*" required></span></p>
         </div>
 
         <div>
-        
-            <label>Select Genre
+            <label for="genre">Select Genre
                 <select class="add-info" id="genre" name="genre" multiple>
                     <option value="Action">Action</option>
                     <option value="action-adventure">Action-Adventure</option>
@@ -38,13 +35,12 @@
             </label>
         </div>
         <div>
-            <label>Size of the game in GB
-                <input type="text" class="add-info" id="size" name="size" placeholder="Enters size" required>
+            <label for="size">Size of the game in GB
+                <input type="number" class="add-info" id="size" name="size" placeholder="Enters size" required>
             </label>
         </div>
         <div>
-
-            <label> Select the List of platforms supported
+            <label for="compatibility"> Select the List of platforms supported
                 <select class="add-info" id="compatibility" name="compatibility" multiple required>
                     <option value="Windowsos">Windows OS</option>
                     <option value="Macos">Mac OS</option>
@@ -57,7 +53,7 @@
             </label>
         </div>
         <div>
-            <label>List of languages supported by the game
+            <label for="languages">List of languages supported by the game
                 <select class="add-info" id="languages" name="languages" multiple requireds>
                     <option value="Arabic">Arabic</option>
                     <option value="English">English</option>
@@ -73,25 +69,25 @@
         </div>
         <div>
 
-            <label>Recommended age group
-                <input type="text" class="add-info" id="age_rating" name="age_rating" placeholder="Enter recommended age" required>
+            <label for="age_rating">Recommended age group
+                <input type="number" class="add-info" id="age_rating" name="age_rating" placeholder="Enter recommended age" required>
             </label>
         </div>
         <div>
 
-            <label>Website
-                <input type="text" class="add-info" id="website" name="website" placeholder="Enter Website" required>
+            <label for="website">Website
+                <input type="url" class="add-info" id="website" name="website" placeholder="Enter Website" required>
             </label>
         </div>
         <div>
 
-            <label>Price
-                <input type="text" class="add-info" id="price" name="price" placeholder="Enter price" required>
+            <label for="price">Price
+                <input type="number" class="add-info" id="price" name="price" placeholder="Enter price" required>
             </label>
 
         </div>
 
-        <button class="addbtn">Add</button>
+        <button type="submit" class="addbtn">Add</button>
 
     </form>
 
