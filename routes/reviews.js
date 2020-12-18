@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const reviewsData = require("../data/reviews");
+var xss = require("xss");
 
 router.get("/:game_id", async (req, res) => {
   //Will show reviews for game with specified ID
@@ -19,12 +20,12 @@ router.post("/add/:game_id", async (req, res) => {
     if (req.session.user.admin) {
       let game_id = req.params.game_id;
       data = req.body;
-      console.log(game_id);
+      // console.log(game_id);
       try {
         let user_id = req.session.user.uid;
         // let user_id = data.user_id;
-        let comment = data.comment;
-        let rating = data.rating;
+        let comment = xss(data.comment);
+        let rating = xss(data.rating);
         let image = "some string for image";
         // console.log(user_id)
         // console.log(review)

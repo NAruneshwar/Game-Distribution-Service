@@ -8,6 +8,7 @@ const bodyParser = require("body-parser");
 const fs = require("fs");
 const { url } = require("inspector");
 const static = express.static(__dirname + "/public");
+var xss = require("xss");
 
 const gamesData = require("../data/games");
 const reviewsData = require("../data/reviews");
