@@ -106,12 +106,23 @@ router.get("/check_username", async (req, res) => {
 
 router.get("/logout", async (req, res) => {
   if (req.session.user) {
-    // const newDelCookie = new Date();
-    // newDelCookie.setHours(newDelCookie.getHours() - 1);
-    // res.cookie("lastAccessed", "", { expires: newDelCookie });
-    // res.clearCookie("lastAccessed");
+    const newDelCookie = new Date();
+    newDelCookie.setHours(newDelCookie.getHours() - 1);
+    res.cookie("lastAccessed", "", { expires: newDelCookie });
+    res.clearCookie("lastAccessed");
 
-    req.session.destroy();
+    req.logout();
+    req.session = null;
+    // req.session.destroy(function (err) {
+    //   if (err) {
+    //     console.log(err);
+    //   } else {
+    //     // console.log(session.email);
+    //     req.end();
+    //     res.redirect("/");
+    //   }
+    // });
+    // req.session = null;
     res.redirect("/");
     return;
   } else {

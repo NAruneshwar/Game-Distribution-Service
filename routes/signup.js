@@ -61,8 +61,12 @@ function checksForNewUser(
 
   password = password.trim();
 
-  if (!country || typeof country != "string" || country == "") {
+  if (!password || typeof password != "string" || password == "") {
     throw "Password field is empty";
+  }
+
+  if (password.length < 8) {
+    throw "Password length should be minimum 8 char";
   }
 }
 
