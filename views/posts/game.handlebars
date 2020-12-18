@@ -10,6 +10,8 @@
         {{else}}
         <img class="gdata-info" alt="Image Not Found" src="/public/images/image_not_available.jpg" id="game_img"/>
         {{/if}}
+        <div class="gdata-info">Total Downloads: {{data.no_of_downloads}}</div>
+
         <div class="gdata-info">Genre: {{data.genre}}</div> 
 
         <div class="gdata-info">Size: {{data.size}}</div> 
@@ -22,7 +24,8 @@
  
         <div class="gdata-info">Website: {{data.website}}</div> 
 
-        <div class="gdata-info">Price: ${{data.price}}</div> 
+        <div class="gdata-info">Price: ${{data.price}}</div>
+        
         {{#if userLoggedIn}}
             {{!-- {{#if userAdmin}} --}}
             <form action="/payment/{{data._id}}" method="GET">
@@ -65,9 +68,11 @@
         <div class="gdata-info">Reviews:</div>
         {{#if reviews}}
         {{#each reviews}}
-            <img src="">
-            <p><h4>Username:<span>{{username}}</span></h4>Rating by user:{{rating}}</p>
-            <p>{{review}}</p>
+            <div>
+                <img src="">
+                <p><h4>Username:<span>{{username}}</span></h4>Rating by user:{{rating}}</p>
+                <p>{{review}}</p>
+            </div>
         {{/each}}
         {{else}}
         <p>Currently, There are no reviews for this game.</p>

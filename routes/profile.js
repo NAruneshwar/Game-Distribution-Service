@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const profileData = require("../data/profile");
 const gameData = require("../data/games");
+var xss = require("xss");
 
 router.get("/:user_id", async (req, res) => {
   let user_id = req.params.user_id;

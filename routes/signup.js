@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const userData = require("../data/users");
 const bcrypt = require("bcryptjs");
+const xss = require("xss");
 
 function checksForNewUser(
   first_name,
@@ -112,14 +113,14 @@ router.post("/newuser", async (req, res) => {
   data = req.body;
   try {
     checksForNewUser(
-      data.first_name,
-      data.last_name,
-      data.username,
-      data.age,
-      data.email,
-      data.state,
-      data.country,
-      data.password
+      xss(first_name),
+      xss(data.last_name),
+      xss(data.username),
+      xss(data.age),
+      xss(data.email),
+      xss(data.state),
+      xss(data.country),
+      xss(data.password)
     );
     const hashedPassword = await bcrypt.hash(data.password, 16);
     const user = await userData.create(
