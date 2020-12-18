@@ -20,6 +20,7 @@ const constructorMethod = (app) => {
   app.use("/users", userroutes);
   app.use("/about", about);
   app.use("/users", userroutes);
+  app.use("/logout", loginroutes);
   app.get("/", (req, res) => {
     res.redirect("/games/");
   });
