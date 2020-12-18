@@ -255,7 +255,7 @@ a.wb:hover {
   box-shadow: 0 0 3px 0 #11498a;
   background: white;
   padding: 20px;
-  margin: 5% auto 0;
+  margin: 5% auto;
   text-align: left;
 }
 
@@ -268,7 +268,7 @@ a.wb:hover {
   font-size: 20px;
   font-weight: bold;
   color: #11498a;
-  margin-bottom: 2px;
+  margin-bottom: 15px;
 }
 
 .add-info {
@@ -322,12 +322,12 @@ a.wb:hover {
 .dbtn {
   background: #11498a;
   color: white;
-  width: 20%;
+  width: fit-content;
   padding: 10px;
   border-radius: 10px;
   font-size: 14px;
   margin: 10px 0;
-  border: none;
+  border: ;
   outline: none;
   cursor: pointer;
   font-weight: bold;
@@ -408,6 +408,7 @@ a.wb:hover {
 
 .card-container {
   padding: 15px;
+  height: 150px;
 }
 
 .list_games {
@@ -545,4 +546,17 @@ span.price {
   width: fit-content;
   color: #11498a;;
   font-size: 20px;
+}
+
+#box {
+    color: #11498a;
+    margin-bottom: 30px;
+}
+
+.dinfo {
+  margin: 4px 0;
+  width: fit-content;
+  color: #11498a;;
+  font-size: 20px;
+
 }
