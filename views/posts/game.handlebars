@@ -25,7 +25,7 @@
         <div class="gdata-info">Website: {{data.website}}</div> 
 
         <div class="gdata-info">Price: ${{data.price}}</div>
-        
+
         {{#if userLoggedIn}}
             {{!-- {{#if userAdmin}} --}}
             <form action="/payment/{{data._id}}" method="GET">
@@ -49,13 +49,13 @@
 
                     <div class="gdata-info">
                         <label>
-                            Comment: <input class="rv" type="text" name="comment" placeholder="Write a review here">
+                            Comment: <input class="rv" type="text" name="comment" placeholder="Write a review here" required>
                         </label>
                     </div>
 
                     <div class="gdata-info">
                         <label>
-                            Rating: <input class="rv" type="number" name="rating" placeholder="Rating" max="10" min="1">
+                            Rating: <input class="rv" type="number" name="rating" placeholder="Rating" max="10" min="1" required>
                         </label>
                     </div>
 
