@@ -111,8 +111,8 @@ router.get("/logout", async (req, res) => {
     res.cookie("lastAccessed", "", { expires: newDelCookie });
     res.clearCookie("lastAccessed");
 
-    req.logout();
-    req.session = null;
+    // req.logout();
+    // req.session = null;
     // req.session.destroy(function (err) {
     //   if (err) {
     //     console.log(err);
