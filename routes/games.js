@@ -70,6 +70,36 @@ function checkForGame(
 }
 
 router.get("/genre", async (req, res) => {
+  if (req.session.user) {
+    if (req.session.user.admin) {
+      res.render("posts/genre", {
+        title: "Games By Genre",
+        // data: games,
+        userLoggedIn: true,
+        userAdmin: true,
+      });
+      return;
+    } else {
+      res.render("posts/genre", {
+        title: "Games By Genre",
+        // data: games,
+        userLoggedIn: true,
+        userAdmin: false,
+      });
+      return;
+    }
+  } else {
+    // console.log("hello2");
+    // userLoggedIn = false;
+    res.status(200).render("posts/genre", {
+      title: "Games By Genre",
+      // data: games,
+      userLoggedIn: false,
+      userAdmin: false,
+    });
+    return;
+  }
+
   res.render("posts/genre", { title: "Games By Genre" });
 });
 
@@ -101,7 +131,7 @@ router.get("/", async (req, res) => {
       }
     } else {
       // console.log("hello2");
-      userLoggedIn = false;
+      // userLoggedIn = false;
       res.status(200).render("posts/homepage", {
         title: "Home",
         data: games,
@@ -126,8 +156,39 @@ router.get("/genre/:genre", async (req, res) => {
   const genre = req.params.genre;
   try {
     const games = await gamesData.getByGenre(genre);
-    res.status(200).render("posts/gamelist", { title: "Games", data: games });
-    return;
+
+    if (req.session.user) {
+      if (req.session.user.admin) {
+        res.render("posts/gamelist", {
+          title: "Games",
+          data: games,
+          userLoggedIn: true,
+          userAdmin: true,
+        });
+        return;
+      } else {
+        res.render("posts/gamelist", {
+          title: "Games",
+          data: games,
+          userLoggedIn: true,
+          userAdmin: false,
+        });
+        return;
+      }
+    } else {
+      // console.log("hello2");
+      // userLoggedIn = false;
+      res.status(200).render("posts/gamelist", {
+        title: "Games",
+        data: games,
+        userLoggedIn: false,
+        userAdmin: false,
+      });
+      return;
+    }
+
+    // res.status(200).render("posts/gamelist", { title: "Games", data: games });
+    // return;
   } catch (e) {
     res.status(404).render("posts/genre", { title: "Browse", message: e });
   }
@@ -177,25 +238,61 @@ router.get("/:game_id", async (req, res) => {
     var average_rating = ratingsum / total_ratings;
 
     if (req.session.user) {
-      if (req.session.user.uid) {
-        user_session = req.session.user.uid;
-        res.status(200).render("posts/game", {
+      if (req.session.user.admin) {
+        res.render("posts/game", {
           title: game.name,
           data: game,
           reviews: reviewsuser,
           average_rating: average_rating,
-          user_session: user_session,
+          userLoggedIn: true,
+          userAdmin: true,
+        });
+        return;
+      } else {
+        res.render("posts/game", {
+          title: game.name,
+          data: game,
+          reviews: reviewsuser,
+          average_rating: average_rating,
+          userLoggedIn: true,
+          userAdmin: false,
         });
         return;
       }
+    } else {
+      // console.log("hello2");
+      // userLoggedIn = false;
+      res.status(200).render("posts/game", {
+        title: game.name,
+        data: game,
+        reviews: reviewsuser,
+        average_rating: average_rating,
+        userLoggedIn: false,
+        userAdmin: false,
+      });
+      return;
     }
-    res.status(200).render("posts/game", {
-      title: game.name,
-      data: game,
-      reviews: reviewsuser,
-      average_rating: average_rating,
-    });
-    return;
+
+    // if (req.session.user) {
+    //   if (req.session.user.uid) {
+    //     // user_session = req.session.user.uid;
+    //     res.status(200).render("posts/game", {
+    //       title: game.name,
+    //       data: game,
+    //       reviews: reviewsuser,
+    //       average_rating: average_rating,
+    //       user_session: user_session,
+    //     });
+    //     return;
+    //   }
+    // }
+    // res.status(200).render("posts/game", {
+    //   title: game.name,
+    //   data: game,
+    //   reviews: reviewsuser,
+    //   average_rating: average_rating,
+    // });
+    // return;
   } catch (e) {
     res.status(404).render("posts/game", { title: "Home page", message: e });
   }
