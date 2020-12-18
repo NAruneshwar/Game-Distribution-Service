@@ -38,8 +38,8 @@ router.post("/add/:game_id", async (req, res) => {
           rating,
           image
         );
-        console.log(reviewAdded);
-        res.redirect("/");
+        // console.log(reviewAdded);
+        return res.redirect(req.get('referer'));
       } catch (e) {
         res.status(401).redirect("/games/".game_id);
       }
